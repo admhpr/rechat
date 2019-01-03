@@ -1,0 +1,24 @@
+{
+  "name": "rechat",
+  "version": "1.0.0",
+  "description": "A simple React chat frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harps116/rechat.git"
+  },
+  "author": "Adam Harpur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harps116/rechat/issues"
+  },
+  "homepage": "https://github.com/harps116/rechat#readme",
+  "dependencies": {
+    "@pusher/chatkit": "^0.7.18",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
