@@ -16,9 +16,10 @@ const DUMMY_DATA = [
 ];
 class MessageList extends React.Component {
   render() {
+    const { messages } = this.props;
     return (
       <div className="message-list">
-        {DUMMY_DATA.map((message, index) => {
+        {messages.map((message, index) => {
           return (
             <div key={index} className="message">
               <div className="message-username">{message.senderId}</div>

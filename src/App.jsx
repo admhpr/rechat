@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <RoomList />
-        <MessageList />
+        <MessageList messages={this.state.messages} />
         <SendMessageForm />
         <NewRoomForm />
       </div>
