@@ -5,11 +5,33 @@ import SendMessageForm from "./components/SendMessageForm";
 import RoomList from "./components/RoomList";
 import NewRoomForm from "./components/NewRoomForm";
 
-import { instanceLocator } from "./config";
+import { instanceLocator, tokenUrl } from "./config.ts";
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      messages: []
+    };
+  }
   componentDidMount() {
     const chatManager = new Chatkit.ChatManager({
-      instanceLocator
+      instanceLocator,
+      userId: "perborgen",
+      tokenProvider: new Chatkit.TokenProvider({
+        url: tokenUrl
+      })
+    });
+
+    chatManager.connect().then(currentUser => {
+      currentUser.subscribeToRoom({
+        roomId: 9434230,
+        hooks: {
+          onNewMessage: message => {
+            console.log("message.text: ", message.text);
+            this.setState({ messages: [...this.state.messages, message] });
+          }
+        }
+      });
     });
   }
   render() {
