@@ -13,6 +13,7 @@ class SendMessageForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state.message);
   }
   render() {
     return (

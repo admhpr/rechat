@@ -16,24 +16,29 @@ class App extends React.Component {
   componentDidMount() {
     const chatManager = new Chatkit.ChatManager({
       instanceLocator,
-      userId: "perborgen",
+      userId: "Admin",
       tokenProvider: new Chatkit.TokenProvider({
         url
       })
     });
 
     chatManager.connect().then(currentUser => {
+      this.currentUser = currentUser;
       currentUser.subscribeToRoom({
-        roomId: 9434230,
+        roomId: 19385003,
         hooks: {
           onNewMessage: message => {
             console.log("message.text: ", message.text);
-            this.setState({ messages: [...this.state.messages, message] });
+            this.setState({
+              messages: [...this.state.messages, message]
+            });
           }
         }
       });
     });
   }
+
+  sendMessage() {}
   render() {
     return (
       <div className="app">
