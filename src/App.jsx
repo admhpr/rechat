@@ -38,20 +38,23 @@ class App extends React.Component {
         })
         .catch(err => console.log("error on joinableRooms: ", err));
 
-      this.currentUser
-        .subscribeToRoom({
-          roomId: 19385003,
-          hooks: {
-            onNewMessage: message => {
-              console.log("message.text: ", message.text);
-              this.setState({
-                messages: [...this.state.messages, message]
-              });
-            }
-          }
-        })
-        .catch(err => console.log("error on subsubscribe to room: ", err));
+      this.subscribeToRoom();
     });
+  }
+
+  subscribeToRoom() {
+    this.currentUser
+      .subscribeToRoom({
+        roomId: 19385003,
+        hooks: {
+          onNewMessage: message => {
+            this.setState({
+              messages: [...this.state.messages, message]
+            });
+          }
+        }
+      })
+      .catch(err => console.log("error on subsubscribe to room: ", err));
   }
 
   sendMessage(text) {
