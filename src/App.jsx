@@ -69,8 +69,9 @@ class App extends React.Component {
     this.currentUser.sendMessage({ text, roomId: this.state.roomId });
   }
 
-  createRoom() {
+  createRoom(roomName) {
     //TODO:
+    console.log("roomName: ", roomName);
   }
   render() {
     const { joinedRooms, joinableRooms } = this.state;
