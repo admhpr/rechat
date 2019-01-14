@@ -1,8 +1,8 @@
 :root {
-    --main-color: #5ea3d0;
-    --secondary-color: white;
-    --main-text-color: #3e5869;
-    --secondary-text-color: #b0c7d6;
+    --main-color: #3fb0ac;
+    --secondary-color: #fae596;
+    --main-text-color: #333;
+    --secondary-text-color: #3fb0ac;
     --send-message-form: #F5F5F5;
 }
 
@@ -13,7 +13,7 @@ body {
     padding: 0;
     font-family: system-ui;
     font-weight: 200;
-    color: #3e5869;
+    color: var(--main-text-color);
 }
 
 #root {
@@ -101,6 +101,7 @@ body {
 .new-room-form input {
     width: 135px;
     background: var(--secondary-color);
+    color: var(--main-text-color)
 }
 
 .new-room-form button {
@@ -111,7 +112,7 @@ body {
 
 .new-room-form input::placeholder {
     color: var(--main-text-color);
-    font-weight: 200;
+    font-weight: 600;
 }
 
 .new-room-form input:focus {
@@ -184,6 +185,7 @@ body {
 
 .send-message-form input::placeholder {
     color: var(--main-text-color);
+    font-weight: 600;
 }
 
 .help-text {
