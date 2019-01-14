@@ -18,6 +18,7 @@ class App extends React.Component {
     this.sendMessage = this.sendMessage.bind(this);
     this.subscribeToRoom = this.subscribeToRoom.bind(this);
     this.getRooms = this.getRooms.bind(this);
+    this.createRoom = this.createRoom.bind(this);
   }
   componentDidMount() {
     const chatManager = new Chatkit.ChatManager({
@@ -67,6 +68,10 @@ class App extends React.Component {
   sendMessage(text) {
     this.currentUser.sendMessage({ text, roomId: this.state.roomId });
   }
+
+  createRoom() {
+    //TODO:
+  }
   render() {
     const { joinedRooms, joinableRooms } = this.state;
     return (
@@ -78,7 +83,7 @@ class App extends React.Component {
         />
         <MessageList messages={this.state.messages} />
         <SendMessageForm sendMessage={this.sendMessage} />
-        <NewRoomForm />
+        <NewRoomForm createRoom={this.createRoom} />
       </div>
     );
   }
