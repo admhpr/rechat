@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "03e0628d3ed5c41453f6";
+/******/ 	var hotCurrentHash = "62020ff48701f36b6dc4";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -792,6 +792,751 @@
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./node_modules/@pusher/chatkit/dist/web/chatkit.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@pusher/chatkit/dist/web/chatkit.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {!function(e,t){ true?module.exports=t():undefined}(this,function(){"use strict";"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self&&self;var e,t,n=(function(e,t){var n;n=function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=10)}([function(e,t,n){function r(e){var t={};if(!e)return t;for(var n=0,r=e.split("\r\n");n<r.length;n++){var o=r[n],i=o.indexOf(": ");if(i>0){var s=o.substring(0,i),u=o.substring(i+2);t[s]=u}}return t}Object.defineProperty(t,"__esModule",{value:!0}),t.responseToHeadersObject=r;var o=function(){function e(e,t,n){this.statusCode=e,this.headers=t,this.info=n}return e.fromXHR=function(t){var n=t.responseText;try{n=JSON.parse(t.responseText)}catch(e){}return new e(t.status,r(t.getAllResponseHeaders()),n)},e}();t.ErrorResponse=o;var i=function(){return function(e){this.error=e}}();t.NetworkError=i,function(e){e[e.UNSENT=0]="UNSENT",e[e.OPENED=1]="OPENED",e[e.HEADERS_RECEIVED=2]="HEADERS_RECEIVED",e[e.LOADING=3]="LOADING",e[e.DONE=4]="DONE"}(t.XhrReadyState||(t.XhrReadyState={}))},function(e,t,n){var r;Object.defineProperty(t,"__esModule",{value:!0}),function(e){e[e.VERBOSE=1]="VERBOSE",e[e.DEBUG=2]="DEBUG",e[e.INFO=3]="INFO",e[e.WARNING=4]="WARNING",e[e.ERROR=5]="ERROR"}(r=t.LogLevel||(t.LogLevel={}));var o=function(){function e(e){void 0===e&&(e=2),this.threshold=e;var t=Array(),n="--------------------------------------------------------------------------------";window.console.group||(window.console.group=function(e){t.push(e),window.console.log("%c \nBEGIN GROUP: %c",n,e)}),window.console.groupEnd||(window.console.groupEnd=function(){window.console.log("END GROUP: %c\n%c",t.pop(),n)})}return e.prototype.verbose=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log(window.console.log,r.VERBOSE,e)},e.prototype.debug=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log(window.console.log,r.DEBUG,e)},e.prototype.info=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log(window.console.info,r.INFO,e)},e.prototype.warn=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log(window.console.warn,r.WARNING,e)},e.prototype.error=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log(window.console.error,r.ERROR,e)},e.prototype.log=function(e,t,n){var o=this;if(t>=this.threshold){var i="Logger."+r[t];n.length>1?(window.console.group(),n.forEach(function(t){o.errorAwareLog(e,t,i)}),window.console.groupEnd()):this.errorAwareLog(e,n[0],i)}},e.prototype.errorAwareLog=function(e,t,n){if(void 0!==t&&t.info&&t.info.error_uri){var r=t.info.error_description;e((r||"An error has occurred")+". More information can be found at "+t.info.error_uri+". Error object: ",t)}else e(n+": ",t)},e}();t.ConsoleLogger=o;var i=function(){function e(){}return e.prototype.verbose=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t]},e.prototype.debug=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t]},e.prototype.info=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t]},e.prototype.warn=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t]},e.prototype.error=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t]},e}();t.EmptyLogger=i},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(0);t.createRetryStrategyOptionsOrDefault=function(e){var t=e.initialTimeoutMillis||1e3,n=e.maxTimeoutMillis||5e3,r=-1;return void 0!==e.limit&&null!=e.limit&&(r=e.limit),{increaseTimeout:void 0!==e.increaseTimeout?e.increaseTimeout:function(e){return 2*e>n?n:2*e},initialTimeoutMillis:t,limit:r,maxTimeoutMillis:n}};var o=function(){return function(e){this.waitTimeMillis=e}}();t.Retry=o;var i=function(){return function(e){this.error=e}}();t.DoNotRetry=i;var s=function(){function e(e,t,n){this.options=e,this.logger=t,this.retryUnsafeRequests=n,this.currentRetryCount=0,this.initialTimeoutMillis=e.initialTimeoutMillis,this.maxTimeoutMillis=e.maxTimeoutMillis,this.limit=e.limit,this.increaseTimeoutFunction=e.increaseTimeout,this.currentBackoffMillis=this.initialTimeoutMillis}return e.prototype.attemptRetry=function(e){return this.logger.verbose(this.constructor.name+": Error received",e),this.currentRetryCount>=this.limit&&this.limit>=0?(this.logger.verbose(this.constructor.name+": Retry count is over the maximum limit: "+this.limit),new i(e)):e instanceof r.ErrorResponse&&e.headers["Retry-After"]?(this.logger.verbose(this.constructor.name+": Retry-After header is present, retrying in "+e.headers["Retry-After"]),new o(1e3*parseInt(e.headers["Retry-After"],10))):e instanceof r.NetworkError||e instanceof r.ErrorResponse&&("GET"===(t=(t=e.headers["Request-Method"]).toUpperCase())||"HEAD"===t||"OPTIONS"===t||"SUBSCRIBE"===t)||this.retryUnsafeRequests?this.shouldSafeRetry(e):e instanceof r.NetworkError?this.shouldSafeRetry(e):(this.logger.verbose(this.constructor.name+": Error is not retryable",e),new i(e));var t},e.prototype.shouldSafeRetry=function(e){return e instanceof r.NetworkError?(this.logger.verbose(this.constructor.name+": It's a Network Error, will retry",e),new o(this.calulateMillisToRetry())):e instanceof r.ErrorResponse&&e.statusCode>=500&&e.statusCode<600?(this.logger.verbose(this.constructor.name+": Error 5xx, will retry"),new o(this.calulateMillisToRetry())):(this.logger.verbose(this.constructor.name+": Error is not retryable",e),new i(e))},e.prototype.calulateMillisToRetry=function(){return this.currentBackoffMillis=this.increaseTimeoutFunction(this.currentBackoffMillis),this.logger.verbose(this.constructor.name+": Retrying in "+this.currentBackoffMillis+"ms"),this.currentBackoffMillis},e}();t.RetryResolution=s},function(e,t,n){var r=this&&this.__assign||Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var o in t=arguments[n])Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o]);return e};Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),i=n(4),s=n(5),u=n(6),a=n(11),c=n(12),h=n(7),l=n(13),f=n(14),d=n(8),p=function(){function e(e){this.options=e,this.host=e.host.replace(/(\/)+$/,""),this.logger=e.logger||new o.ConsoleLogger,this.websocketTransport=new f.default(this.host),this.httpTransport=new l.default(this.host,e.encrypted),this.sdkProduct=e.sdkProduct||"unknown",this.sdkVersion=e.sdkVersion||"unknown",this.sdkPlatform=navigator?"ReactNative"===navigator.product?"react-native":"web":"node"}return e.prototype.request=function(e,t){var n=this;return e.tokenProvider?e.tokenProvider.fetchToken(t).then(function(t){return void 0!==e.headers?e.headers.Authorization="Bearer "+t:e.headers=((n={}).Authorization="Bearer "+t,n),e;var n}).then(function(e){return n.makeRequest(e)}):this.makeRequest(e)},e.prototype.subscribeResuming=function(e,t,n,o,i,u){var l=c.replaceMissingListenersWithNoOps(n),f=a.subscribeStrategyListenersFromSubscriptionListeners(l),p=!1;return s.createResumingStrategy(o,h.createTokenProvidingStrategy(d.createTransportStrategy(e,this.websocketTransport,this.logger),this.logger,u),this.logger,i)({onEnd:f.onEnd,onError:f.onError,onEvent:f.onEvent,onOpen:function(e){p||(p=!0,f.onOpen(e)),l.onSubscribe()},onRetrying:f.onRetrying},r({},t,this.infoHeaders()))},e.prototype.subscribeNonResuming=function(e,t,n,o,i){var s=c.replaceMissingListenersWithNoOps(n),l=a.subscribeStrategyListenersFromSubscriptionListeners(s),f=!1;return u.createRetryingStrategy(o,h.createTokenProvidingStrategy(d.createTransportStrategy(e,this.websocketTransport,this.logger),this.logger,i),this.logger)({onEnd:l.onEnd,onError:l.onError,onEvent:l.onEvent,onOpen:function(e){f||(f=!0,l.onOpen(e)),s.onSubscribe()},onRetrying:l.onRetrying},r({},t,this.infoHeaders()))},e.prototype.infoHeaders=function(){return{"X-SDK-Language":"javascript","X-SDK-Platform":this.sdkPlatform,"X-SDK-Product":this.sdkProduct,"X-SDK-Version":this.sdkVersion}},e.prototype.makeRequest=function(e){var t=this;return i.executeNetworkRequest(function(){return t.httpTransport.request(r({},e,{headers:r({},e.headers,t.infoHeaders())}))},e).catch(function(e){throw t.logger.error(e),e})},e}();t.BaseClient=p},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(0);function o(e,t,n){return e.onreadystatechange=function(){4===e.readyState&&(e.status>=200&&e.status<300?t(e.response):0!==e.status?n(r.ErrorResponse.fromXHR(e)):n(new r.NetworkError("No Connection")))},e}t.executeNetworkRequest=function(e,t){return new Promise(function(n,r){!function(e,t){t.json?e.send(JSON.stringify(t.json)):e.send(t.body)}(o(e(),n,r),t)})},t.sendRawRequest=function(e){return new Promise(function(t,n){var r=o(new window.XMLHttpRequest,t,n);if(r.open(e.method.toUpperCase(),e.url,!0),e.headers)for(var i in e.headers)e.headers.hasOwnProperty(i)&&r.setRequestHeader(i,e.headers[i]);r.send(e.body)})}},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(0),o=n(2);t.createResumingStrategy=function(e,t,n,r){var s=o.createRetryStrategyOptionsOrDefault(e),u=new o.RetryResolution(s,n);return function(e,r){return new i(n,r,t,e,u)}};var i=function(){return function(e,t,n,r,o){var i=this;this.unsubscribe=function(){i.state.unsubscribe()},this.onTransition=function(e){i.state=e},this.state=new s(this.onTransition,e,t,n,r,o)}}(),s=function(){function e(e,t,n,r,o,i,s){var c=this;this.onTransition=e,this.logger=t,this.headers=n,this.nextSubscribeStrategy=r,this.listeners=o,this.retryResolution=i,this.initialEventId=s;var l=s;t.verbose("ResumingSubscription: transitioning to OpeningSubscriptionState"),l&&(n["Last-Event-Id"]=l,t.verbose("ResumingSubscription: initialEventId is "+l)),this.underlyingSubscription=r({onEnd:function(n){e(new h(t,o,n))},onError:function(s){e(new a(s,e,t,n,o,r,i,l))},onEvent:function(e){l=e.eventId,o.onEvent(e)},onOpen:function(n){e(new u(t,n,o,c.underlyingSubscription,e))},onRetrying:o.onRetrying},n)}return e.prototype.unsubscribe=function(){this.onTransition(new c(this.logger)),this.underlyingSubscription.unsubscribe()},e}(),u=function(){function e(e,t,n,r,o){this.logger=e,this.headers=t,this.listeners=n,this.underlyingSubscription=r,this.onTransition=o,e.verbose("ResumingSubscription: transitioning to OpenSubscriptionState"),n.onOpen(t)}return e.prototype.unsubscribe=function(){this.onTransition(new c(this.logger)),this.underlyingSubscription.unsubscribe()},e}(),a=function(){function e(e,t,n,i,s,a,c,f){var d=this;this.onTransition=t,this.logger=n,this.headers=i,this.listeners=s,this.nextSubscribeStrategy=a,this.retryResolution=c,n.verbose("ResumingSubscription: transitioning to ResumingSubscriptionState");var p=function(e,i){s.onRetrying();var u,a=((u=e)instanceof r.ErrorResponse&&(u.headers["Request-Method"]="SUBSCRIBE"),c.attemptRetry(u));a instanceof o.Retry?d.timeout=window.setTimeout(function(){g(i)},a.waitTimeMillis):t(new l(n,s,e))},g=function(e){n.verbose("ResumingSubscription: trying to re-establish the subscription"),e&&(n.verbose("ResumingSubscription: lastEventId: "+e),i["Last-Event-Id"]=e),d.underlyingSubscription=a({onEnd:function(e){t(new h(n,s,e))},onError:function(e){p(e,f)},onEvent:function(e){f=e.eventId,s.onEvent(e)},onOpen:function(e){t(new u(n,e,s,d.underlyingSubscription,t))},onRetrying:s.onRetrying},i)};p(e,f)}return e.prototype.unsubscribe=function(){this.onTransition(new c(this.logger)),window.clearTimeout(this.timeout),this.underlyingSubscription.unsubscribe()},e}(),c=function(){function e(e,t){this.logger=e,e.verbose("ResumingSubscription: transitioning to EndingSubscriptionState")}return e.prototype.unsubscribe=function(){throw new Error("Subscription is already ending")},e}(),h=function(){function e(e,t,n){this.logger=e,this.listeners=t,e.verbose("ResumingSubscription: transitioning to EndedSubscriptionState"),t.onEnd(n)}return e.prototype.unsubscribe=function(){throw new Error("Subscription has already ended")},e}(),l=function(){function e(e,t,n){this.logger=e,this.listeners=t,e.verbose("ResumingSubscription: transitioning to FailedSubscriptionState",n),t.onError(n)}return e.prototype.unsubscribe=function(){throw new Error("Subscription has already ended")},e}()},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(0),o=n(2);t.createRetryingStrategy=function(e,t,n){var r=o.createRetryStrategyOptionsOrDefault(e),s=new o.RetryResolution(r,n);return function(e,r){return new i(n,r,e,t,s)}};var i=function(){return function(e,t,n,r,o){var i=this;this.unsubscribe=function(){i.state.unsubscribe()},this.onTransition=function(e){i.state=e},this.state=new s(this.onTransition,e,t,n,r,o)}}(),s=function(){function e(e,t,n,r,o,i){var s=this;this.logger=t,this.headers=n,this.listeners=r,this.nextSubscribeStrategy=o,this.retryResolution=i,t.verbose("RetryingSubscription: transitioning to OpeningSubscriptionState"),this.underlyingSubscription=o({onEnd:function(n){return e(new c(t,r,n))},onError:function(s){return e(new u(s,e,t,n,r,o,i))},onEvent:r.onEvent,onOpen:function(n){return e(new a(t,r,n,s.underlyingSubscription,e))},onRetrying:r.onRetrying},n)}return e.prototype.unsubscribe=function(){throw this.underlyingSubscription.unsubscribe(),new Error("Method not implemented.")},e}(),u=function(){function e(e,t,n,i,s,u,l){var f=this;this.onTransition=t,this.logger=n,this.headers=i,this.listeners=s,this.nextSubscribeStrategy=u,this.retryResolution=l,n.verbose("RetryingSubscription: transitioning to RetryingSubscriptionState");var d=function(e){s.onRetrying();var i,u=((i=e)instanceof r.ErrorResponse&&(i.headers["Request-Method"]="SUBSCRIBE"),l.attemptRetry(i));u instanceof o.Retry?f.timeout=window.setTimeout(function(){p()},u.waitTimeMillis):t(new h(n,s,e))},p=function(){n.verbose("RetryingSubscription: trying to re-establish the subscription");var e=u({onEnd:function(e){return t(new c(n,s,e))},onError:function(e){return d(e)},onEvent:s.onEvent,onOpen:function(r){t(new a(n,s,r,e,t))},onRetrying:s.onRetrying},i)};d(e)}return e.prototype.unsubscribe=function(){window.clearTimeout(this.timeout),this.onTransition(new c(this.logger,this.listeners))},e}(),a=function(){function e(e,t,n,r,o){this.logger=e,this.listeners=t,this.headers=n,this.underlyingSubscription=r,this.onTransition=o,e.verbose("RetryingSubscription: transitioning to OpenSubscriptionState"),t.onOpen(n)}return e.prototype.unsubscribe=function(){this.underlyingSubscription.unsubscribe(),this.onTransition(new c(this.logger,this.listeners))},e}(),c=function(){function e(e,t,n){this.logger=e,this.listeners=t,e.verbose("RetryingSubscription: transitioning to EndedSubscriptionState"),t.onEnd(n)}return e.prototype.unsubscribe=function(){throw new Error("Subscription has already ended")},e}(),h=function(){function e(e,t,n){this.logger=e,this.listeners=t,e.verbose("RetryingSubscription: transitioning to FailedSubscriptionState",n),t.onError(n)}return e.prototype.unsubscribe=function(){throw new Error("Subscription has already ended")},e}()},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(0);t.createTokenProvidingStrategy=function(e,t,n){return n?function(r,i){return new o(t,r,i,n,e)}:e};var o=function(){function e(e,t,n,r,o){var u=this;this.logger=e,this.listeners=t,this.headers=n,this.tokenProvider=r,this.nextSubscribeStrategy=o,this.unsubscribe=function(){u.state.unsubscribe(),u.state=new s(u.logger)},this.state=new i(e,n,o),this.subscribe()}return e.prototype.subscribe=function(){var e=this;this.tokenProvider.fetchToken().then(function(t){var n=Object.assign({},e.listeners);e.state.subscribe(t,{onEnd:function(t){e.state=new s(e.logger),n.onEnd(t)},onError:function(r){e.isTokenExpiredError(r)?(e.tokenProvider.clearToken(t),e.subscribe()):(e.state=new s(e.logger),n.onError(r))},onEvent:e.listeners.onEvent,onOpen:e.listeners.onOpen})}).catch(function(t){e.logger.debug("TokenProvidingSubscription: error when fetching token:",t),e.state=new s(e.logger),e.listeners.onError(t)})},e.prototype.isTokenExpiredError=function(e){return e instanceof r.ErrorResponse&&401===e.statusCode&&"authentication/expired"===e.info},e}(),i=function(){function e(e,t,n){this.logger=e,this.headers=t,this.nextSubscribeStrategy=n,e.verbose("TokenProvidingSubscription: transitioning to ActiveState")}return e.prototype.subscribe=function(e,t){var n=this;this.putTokenIntoHeader(e),this.underlyingSubscription=this.nextSubscribeStrategy({onEnd:function(e){n.logger.verbose("TokenProvidingSubscription: subscription ended"),t.onEnd(e)},onError:function(e){n.logger.verbose("TokenProvidingSubscription: subscription errored:",e),t.onError(e)},onEvent:t.onEvent,onOpen:function(e){n.logger.verbose("TokenProvidingSubscription: subscription opened"),t.onOpen(e)},onRetrying:t.onRetrying},this.headers)},e.prototype.unsubscribe=function(){this.underlyingSubscription.unsubscribe()},e.prototype.putTokenIntoHeader=function(e){this.headers.Authorization="Bearer "+e,this.logger.verbose("TokenProvidingSubscription: token fetched: "+e)},e}(),s=function(){function e(e){this.logger=e,e.verbose("TokenProvidingSubscription: transitioning to InactiveState")}return e.prototype.subscribe=function(e,t){this.logger.verbose("TokenProvidingSubscription: subscribe called in Inactive state; doing nothing")},e.prototype.unsubscribe=function(){this.logger.verbose("TokenProvidingSubscription: unsubscribe called in Inactive state; doing nothing")},e}()},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0}),t.createTransportStrategy=function(e,t,n){return function(n,r){return t.subscribe(e,n,r)}}},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0}),t.HOST_BASE="pusherplatform.io"},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(3);t.BaseClient=r.BaseClient;var o=n(9);t.HOST_BASE=o.HOST_BASE;var i=n(15);t.Instance=i.default;var s=n(1);t.ConsoleLogger=s.ConsoleLogger,t.EmptyLogger=s.EmptyLogger;var u=n(0);t.ErrorResponse=u.ErrorResponse,t.NetworkError=u.NetworkError,t.responseToHeadersObject=u.responseToHeadersObject,t.XhrReadyState=u.XhrReadyState;var a=n(4);t.executeNetworkRequest=a.executeNetworkRequest,t.sendRawRequest=a.sendRawRequest;var c=n(5);t.createResumingStrategy=c.createResumingStrategy;var h=n(2);t.createRetryStrategyOptionsOrDefault=h.createRetryStrategyOptionsOrDefault,t.DoNotRetry=h.DoNotRetry,t.Retry=h.Retry,t.RetryResolution=h.RetryResolution;var l=n(6);t.createRetryingStrategy=l.createRetryingStrategy;var f=n(7);t.createTokenProvidingStrategy=f.createTokenProvidingStrategy;var d=n(8);t.createTransportStrategy=d.createTransportStrategy,t.default={BaseClient:r.BaseClient,ConsoleLogger:s.ConsoleLogger,EmptyLogger:s.EmptyLogger,Instance:i.default}},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0}),t.subscribeStrategyListenersFromSubscriptionListeners=function(e){return{onEnd:e.onEnd,onError:e.onError,onEvent:e.onEvent,onOpen:e.onOpen,onRetrying:e.onRetrying}}},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0}),t.replaceMissingListenersWithNoOps=function(e){return{onEnd:e.onEnd||function(e){},onError:e.onError||function(e){},onEvent:e.onEvent||function(e){},onOpen:e.onOpen||function(e){},onRetrying:e.onRetrying||function(){},onSubscribe:e.onSubscribe||function(){}}}},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r,o=n(0);!function(e){e[e.UNOPENED=0]="UNOPENED",e[e.OPENING=1]="OPENING",e[e.OPEN=2]="OPEN",e[e.ENDING=3]="ENDING",e[e.ENDED=4]="ENDED"}(r=t.HttpTransportState||(t.HttpTransportState={}));var i=function(){function e(e,t){var n=this;return this.gotEOS=!1,this.lastNewlineIndex=0,this.state=r.UNOPENED,this.xhr=e,this.listeners=t,this.xhr.onreadystatechange=function(){switch(n.xhr.readyState){case o.XhrReadyState.UNSENT:case o.XhrReadyState.OPENED:case o.XhrReadyState.HEADERS_RECEIVED:n.assertStateIsIn(r.OPENING);break;case o.XhrReadyState.LOADING:n.onLoading();break;case o.XhrReadyState.DONE:n.onDone()}},this.state=r.OPENING,this.xhr.send(),this}return e.prototype.unsubscribe=function(){this.state=r.ENDED,this.xhr.abort(),this.listeners.onEnd&&this.listeners.onEnd(null)},e.prototype.onLoading=function(){if(this.assertStateIsIn(r.OPENING,r.OPEN,r.ENDING),200===this.xhr.status){this.state===r.OPENING&&(this.state=r.OPEN,window.console.log(o.responseToHeadersObject(this.xhr.getAllResponseHeaders())),this.listeners.onOpen&&this.listeners.onOpen(o.responseToHeadersObject(this.xhr.getAllResponseHeaders()))),this.assertStateIsIn(r.OPEN);var e=this.onChunk();this.assertStateIsIn(r.OPEN,r.ENDING),e&&(this.state=r.ENDED,e instanceof o.ErrorResponse&&204!==e.statusCode&&this.listeners.onError&&this.listeners.onError(e))}},e.prototype.onDone=function(){if(200===this.xhr.status){this.state===r.OPENING&&(this.state=r.OPEN,this.listeners.onOpen&&this.listeners.onOpen(o.responseToHeadersObject(this.xhr.getAllResponseHeaders()))),this.assertStateIsIn(r.OPEN,r.ENDING);var e=this.onChunk();e?(this.state=r.ENDED,204===e.statusCode?this.listeners.onEnd&&this.listeners.onEnd(null):this.listeners.onError&&this.listeners.onError(e)):this.state<=r.ENDING?this.listeners.onError&&this.listeners.onError(new Error("HTTP response ended without receiving EOS message")):this.listeners.onEnd&&this.listeners.onEnd(null)}else{if(this.assertStateIsIn(r.OPENING,r.OPEN,r.ENDED),this.state===r.ENDED)return;0===this.xhr.status?this.listeners.onError&&this.listeners.onError(new o.NetworkError("Connection lost.")):this.listeners.onError&&this.listeners.onError(o.ErrorResponse.fromXHR(this.xhr))}},e.prototype.onChunk=function(){this.assertStateIsIn(r.OPEN);var e=this.xhr.responseText,t=e.lastIndexOf("\n");if(t>this.lastNewlineIndex){var n=e.slice(this.lastNewlineIndex,t).split("\n");this.lastNewlineIndex=t;for(var o=0,i=n;o<i.length;o++){var s=i[o];if(0!==s.length){var u=JSON.parse(s),a=this.onMessage(u);if(null!=a)return a}}}},e.prototype.assertStateIsIn=function(){for(var e=this,t=[],n=0;n<arguments.length;n++)t[n]=arguments[n];if(!t.some(function(t){return t===e.state})){var o=t.map(function(e){return r[e]}).join(", "),i=r[this.state];window.console.warn("Expected this.state to be one of ["+o+"] but it is "+i)}},e.prototype.onMessage=function(e){switch(this.assertStateIsIn(r.OPEN),this.verifyMessage(e),e[0]){case 0:return null;case 1:return this.onEventMessage(e);case 255:return this.onEOSMessage(e);default:return new Error("Unknown Message: "+JSON.stringify(e))}},e.prototype.onEventMessage=function(e){if(this.assertStateIsIn(r.OPEN),4!==e.length)return new Error("Event message has "+e.length+" elements (expected 4)");e[0];var t=e[1],n=e[2],o=e[3];return"string"!=typeof t?new Error("Invalid event ID in message: "+JSON.stringify(e)):"object"!=typeof n||Array.isArray(n)?new Error("Invalid event headers in message: "+JSON.stringify(e)):(this.listeners.onEvent&&this.listeners.onEvent({body:o,headers:n,eventId:t}),null)},e.prototype.onEOSMessage=function(e){if(this.assertStateIsIn(r.OPEN),4!==e.length)return new Error("EOS message has "+e.length+" elements (expected 4)");e[0];var t=e[1],n=e[2],i=e[3];return"number"!=typeof t?new Error("Invalid EOS Status Code"):"object"!=typeof n||Array.isArray(n)?new Error("Invalid EOS ElementsHeaders"):(this.state=r.ENDING,new o.ErrorResponse(t,n,i))},e.prototype.verifyMessage=function(e){return this.gotEOS?new Error("Got another message after EOS message"):Array.isArray(e)?e.length<1?new Error("Message is empty array"):void 0:new Error("Message is not an array")},e}(),s=function(){function e(e,t){void 0===t&&(t=!0),this.baseURL=(t?"https":"http")+"://"+e}return e.prototype.request=function(e){return this.createXHR(this.baseURL,e)},e.prototype.subscribe=function(e,t,n){var r={headers:n,method:"SUBSCRIBE",path:e};return new i(this.createXHR(this.baseURL,r),t)},e.prototype.createXHR=function(e,t){var n=new window.XMLHttpRequest,r=e+"/"+t.path.replace(/^\/+/,"");if(n.open(t.method.toUpperCase(),r,!0),n=this.setJSONHeaderIfAppropriate(n,t),t.jwt&&n.setRequestHeader("authorization","Bearer "+t.jwt),t.headers)for(var o in t.headers)t.headers.hasOwnProperty(o)&&n.setRequestHeader(o,t.headers[o]);return n},e.prototype.setJSONHeaderIfAppropriate=function(e,t){return t.json&&e.setRequestHeader("content-type","application/json"),e},e}();t.default=s},function(e,t,n){var r=this&&this.__assign||Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var o in t=arguments[n])Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o]);return e};Object.defineProperty(t,"__esModule",{value:!0});var o,i=n(0);!function(e){e[e.Connecting=0]="Connecting",e[e.Open=1]="Open",e[e.Closing=2]="Closing",e[e.Closed=3]="Closed"}(o=t.WSReadyState||(t.WSReadyState={}));var s=function(){function e(){this.subscriptions={}}return e.prototype.add=function(e,t,n,r){return this.subscriptions[e]={headers:r,listeners:n,path:t},e},e.prototype.has=function(e){return void 0!==this.subscriptions[e]},e.prototype.isEmpty=function(){return 0===Object.keys(this.subscriptions).length},e.prototype.remove=function(e){return delete this.subscriptions[e]},e.prototype.get=function(e){return this.subscriptions[e]},e.prototype.getAll=function(){return this.subscriptions},e.prototype.getAllAsArray=function(){var e=this;return Object.keys(this.subscriptions).map(function(t){return r({subID:parseInt(t,10)},e.subscriptions[parseInt(t,10)])})},e.prototype.removeAll=function(){this.subscriptions={}},e}(),u=function(){function e(e,t){this.wsTransport=e,this.subID=t}return e.prototype.unsubscribe=function(){this.wsTransport.unsubscribe(this.subID)},e}(),a=function(){function e(e){this.webSocketPath="/ws",this.forcedClose=!1,this.closedError=null,this.baseURL="wss://"+e+this.webSocketPath,this.lastSubscriptionID=0,this.subscriptions=new s,this.pendingSubscriptions=new s,this.connect()}return e.prototype.subscribe=function(e,t,n){this.tryReconnectIfNeeded();var r=this.lastSubscriptionID++;return this.socket.readyState!==o.Open?(this.pendingSubscriptions.add(r,e,t,n),new u(this,r)):(this.subscriptions.add(r,e,t,n),this.sendMessage(this.getMessage(100,r,e,n)),new u(this,r))},e.prototype.unsubscribe=function(e){this.sendMessage(this.getMessage(198,e));var t=this.subscriptions.get(e);t.listeners.onEnd&&t.listeners.onEnd(null),this.subscriptions.remove(e)},e.prototype.connect=function(){var e=this;this.close(),this.forcedClose=!1,this.closedError=null,this.socket=new window.WebSocket(this.baseURL),this.socket.onopen=function(t){e.pendingSubscriptions.getAllAsArray().forEach(function(t){var n=t.subID,r=t.path,o=t.listeners,i=t.headers;e.subscribePending(r,o,i,n)}),e.pendingSubscriptions.removeAll(),e.pingInterval=window.setInterval(function(){if(!e.pongTimeout){var t=(new Date).getTime();1e4>t-e.lastMessageReceivedTimestamp||(e.sendMessage(e.getMessage(16,t)),e.lastSentPingID=t,e.pongTimeout=window.setTimeout(function(){1e4>(new Date).getTime()-e.lastMessageReceivedTimestamp?e.pongTimeout=null:e.close(new i.NetworkError("Pong response wasn't received until timeout."))},1e4))}},3e4)},this.socket.onmessage=function(t){return e.receiveMessage(t)},this.socket.onerror=function(t){e.close(new i.NetworkError("Connection was lost."))},this.socket.onclose=function(t){if(e.forcedClose){var n=e.closedError?function(t){t.listeners.onError&&t.listeners.onError(e.closedError)}:function(e){e.listeners.onEnd&&e.listeners.onEnd(null)},r=!1===e.pendingSubscriptions.isEmpty()?e.pendingSubscriptions:e.subscriptions;r.getAllAsArray().forEach(n),r.removeAll(),e.closedError&&e.tryReconnectIfNeeded()}else e.tryReconnectIfNeeded()}},e.prototype.close=function(e){this.socket instanceof window.WebSocket&&(this.forcedClose=!0,this.closedError=e,this.socket.close(),window.clearTimeout(this.pingInterval),window.clearTimeout(this.pongTimeout),delete this.pongTimeout,this.lastSentPingID=null)},e.prototype.tryReconnectIfNeeded=function(){this.socket.readyState===o.Closed&&this.connect()},e.prototype.subscribePending=function(e,t,n,r){void 0!==r?(this.subscriptions.add(r,e,t,n),this.sendMessage(this.getMessage(100,r,e,n))):window.console.log("Subscription to path "+e+" has an undefined ID")},e.prototype.getMessage=function(e,t,n,r){return[e,t,n,r]},e.prototype.sendMessage=function(e){if(this.socket.readyState!==o.Open)return window.console.warn("Can't send in \""+o[this.socket.readyState]+'" state');this.socket.send(JSON.stringify(e))},e.prototype.subscription=function(e){return this.subscriptions.get(e)},e.prototype.receiveMessage=function(e){var t;this.lastMessageReceivedTimestamp=(new Date).getTime();try{t=JSON.parse(e.data)}catch(t){return void this.close(new Error("Message is not valid JSON format. Getting "+e.data))}var n=this.validateMessage(t);if(n)this.close(new Error(n.message));else{var r=t.shift();switch(r){case 17:return void this.onPongMessage(t);case 16:return void this.onPingMessage(t);case 99:return void this.onCloseMessage(t)}var o=t.shift(),i=this.subscription(o);if(i){var s=i.listeners;switch(r){case 101:this.onOpenMessage(t,o,s);break;case 102:this.onEventMessage(t,s);break;case 199:this.onEOSMessage(t,o,s);break;default:this.close(new Error("Received non existing type of message."))}}else this.close(new Error('Received message for non existing subscription id: "'+o+'"'))}},e.prototype.validateMessage=function(e){return Array.isArray(e)?e.length<1?new Error("Message is empty array: "+JSON.stringify(e)):null:new Error("Message is expected to be an array. Getting: "+JSON.stringify(e))},e.prototype.onOpenMessage=function(e,t,n){n.onOpen&&n.onOpen(e[1])},e.prototype.onEventMessage=function(e,t){if(3!==e.length)return new Error("Event message has "+e.length+" elements (expected 4)");var n=e[0],r=e[1],o=e[2];return"string"!=typeof n?new Error("Invalid event ID in message: "+JSON.stringify(e)):"object"!=typeof r||Array.isArray(r)?new Error("Invalid event headers in message: "+JSON.stringify(e)):void(t.onEvent&&t.onEvent({eventId:n,headers:r,body:o}))},e.prototype.onEOSMessage=function(e,t,n){if(this.subscriptions.remove(t),3===e.length){var r=e[0],o=e[1],s=e[2];"number"==typeof r?"object"!=typeof o||Array.isArray(o)?n.onError&&n.onError(new Error("Invalid EOS ElementsHeaders")):204!==r?n.onError&&n.onError(new i.ErrorResponse(r,o,s)):n.onEnd&&n.onEnd(null):n.onError&&n.onError(new Error("Invalid EOS Status Code"))}else n.onError&&n.onError(new Error("EOS message has "+e.length+" elements (expected 4)"))},e.prototype.onCloseMessage=function(e){var t=e[0],n=e[1];e[2];return"number"!=typeof t?this.close(new Error("Close message: Invalid EOS Status Code")):"object"!=typeof n||Array.isArray(n)?this.close(new Error("Close message: Invalid EOS ElementsHeaders")):void this.close()},e.prototype.onPongMessage=function(e){var t=e[0];this.lastSentPingID!==t&&window.console.warn("Received pong with ID "+t+" but lastSentPingID was "+this.lastSentPingID),window.clearTimeout(this.pongTimeout),delete this.pongTimeout,this.lastSentPingID=null},e.prototype.onPingMessage=function(e){var t=e[0];this.sendMessage(this.getMessage(17,t))},e}();t.default=a},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(3),o=n(9),i=n(1),s=function(){function e(e){if(!e.locator)throw new Error("Expected `locator` property in Instance options!");var t=e.locator.split(":");if(3!==t.length)throw new Error("The instance locator supplied is invalid. Did you copy it correctly from the Pusher dashboard?");if(!e.serviceName)throw new Error("Expected `serviceName` property in Instance options!");if(!e.serviceVersion)throw new Error("Expected `serviceVersion` property in Instance options!");this.platformVersion=t[0],this.cluster=t[1],this.id=t[2],this.serviceName=e.serviceName,this.serviceVersion=e.serviceVersion,this.host=e.host||this.cluster+"."+o.HOST_BASE,this.logger=e.logger||new i.ConsoleLogger,this.client=e.client||new r.BaseClient({encrypted:e.encrypted,host:this.host,logger:this.logger}),this.tokenProvider=e.tokenProvider}return e.prototype.request=function(e,t){return e.path=this.absPath(e.path),null!=e.headers&&void 0!==e.headers||(e.headers={}),e.tokenProvider=e.tokenProvider||this.tokenProvider,this.client.request(e,t)},e.prototype.subscribeNonResuming=function(e){var t=e.headers||{},n=e.retryStrategyOptions||{},r=e.tokenProvider||this.tokenProvider;return this.client.subscribeNonResuming(this.absPath(e.path),t,e.listeners,n,r)},e.prototype.subscribeResuming=function(e){var t=e.headers||{},n=e.retryStrategyOptions||{},r=e.tokenProvider||this.tokenProvider;return this.client.subscribeResuming(this.absPath(e.path),t,e.listeners,n,e.initialEventId,r)},e.prototype.absPath=function(e){return("/services/"+this.serviceName+"/"+this.serviceVersion+"/"+this.id+"/"+e).replace(/\/+/g,"/").replace(/\/+$/,"")},e}();t.default=s}])},e.exports=n()}(e={exports:{}},e.exports),e.exports);(t=n)&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")&&t.default;var r=n.BaseClient,o=n.HOST_BASE,i=n.Instance,s=n.sendRawRequest;function u(e){return null!=e&&"object"==typeof e&&!0===e["@@functional/placeholder"]}function a(e){return function t(n){return 0===arguments.length||u(n)?t:e.apply(this,arguments)}}function c(e){return function t(n,r){switch(arguments.length){case 0:return t;case 1:return u(n)?t:a(function(t){return e(n,t)});default:return u(n)&&u(r)?t:u(n)?a(function(t){return e(t,r)}):u(r)?a(function(t){return e(n,t)}):e(n,r)}}}function h(e,t){var n;e=e||[],t=t||[];var r=e.length,o=t.length,i=[];for(n=0;n<r;)i[i.length]=e[n],n+=1;for(n=0;n<o;)i[i.length]=t[n],n+=1;return i}function l(e,t){switch(e){case 0:return function(){return t.apply(this,arguments)};case 1:return function(e){return t.apply(this,arguments)};case 2:return function(e,n){return t.apply(this,arguments)};case 3:return function(e,n,r){return t.apply(this,arguments)};case 4:return function(e,n,r,o){return t.apply(this,arguments)};case 5:return function(e,n,r,o,i){return t.apply(this,arguments)};case 6:return function(e,n,r,o,i,s){return t.apply(this,arguments)};case 7:return function(e,n,r,o,i,s,u){return t.apply(this,arguments)};case 8:return function(e,n,r,o,i,s,u,a){return t.apply(this,arguments)};case 9:return function(e,n,r,o,i,s,u,a,c){return t.apply(this,arguments)};case 10:return function(e,n,r,o,i,s,u,a,c,h){return t.apply(this,arguments)};default:throw new Error("First argument to _arity must be a non-negative integer no greater than ten")}}function f(e,t,n){return function(){for(var r=[],o=0,i=e,s=0;s<t.length||o<arguments.length;){var a;s<t.length&&(!u(t[s])||o>=arguments.length)?a=t[s]:(a=arguments[o],o+=1),r[s]=a,u(a)||(i-=1),s+=1}return i<=0?n.apply(this,r):l(i,f(e,r,n))}}var d=c(function(e,t){return 1===e?a(t):l(e,f(e,[],t))});function p(e){return function t(n,r,o){switch(arguments.length){case 0:return t;case 1:return u(n)?t:c(function(t,r){return e(n,t,r)});case 2:return u(n)&&u(r)?t:u(n)?c(function(t,n){return e(t,r,n)}):u(r)?c(function(t,r){return e(n,t,r)}):a(function(t){return e(n,r,t)});default:return u(n)&&u(r)&&u(o)?t:u(n)&&u(r)?c(function(t,n){return e(t,n,o)}):u(n)&&u(o)?c(function(t,n){return e(t,r,n)}):u(r)&&u(o)?c(function(t,r){return e(n,t,r)}):u(n)?a(function(t){return e(t,r,o)}):u(r)?a(function(t){return e(n,t,o)}):u(o)?a(function(t){return e(n,r,t)}):e(n,r,o)}}}var g=Array.isArray||function(e){return null!=e&&e.length>=0&&"[object Array]"===Object.prototype.toString.call(e)};function m(e,t,n){return function(){if(0===arguments.length)return n();var r=Array.prototype.slice.call(arguments,0),o=r.pop();if(!g(o)){for(var i=0;i<e.length;){if("function"==typeof o[e[i]])return o[e[i]].apply(o,r);i+=1}if(function(e){return"function"==typeof e["@@transducer/step"]}(o))return t.apply(null,r)(o)}return n.apply(this,arguments)}}var v={init:function(){return this.xf["@@transducer/init"]()},result:function(e){return this.xf["@@transducer/result"](e)}},y=c(function(e,t){return t>e?t:e});function b(e,t){for(var n=0,r=t.length,o=Array(r);n<r;)o[n]=e(t[n]),n+=1;return o}function S(e){return"[object String]"===Object.prototype.toString.call(e)}var w=a(function(e){return!!g(e)||!!e&&("object"==typeof e&&(!S(e)&&(1===e.nodeType?!!e.length:0===e.length||e.length>0&&(e.hasOwnProperty(0)&&e.hasOwnProperty(e.length-1)))))}),E=function(){function e(e){this.f=e}return e.prototype["@@transducer/init"]=function(){throw new Error("init not implemented on XWrap")},e.prototype["@@transducer/result"]=function(e){return e},e.prototype["@@transducer/step"]=function(e,t){return this.f(e,t)},e}();function I(e){return new E(e)}var R=c(function(e,t){return l(e.length,function(){return e.apply(t,arguments)})});function k(e,t,n){for(var r=n.next();!r.done;){if((t=e["@@transducer/step"](t,r.value))&&t["@@transducer/reduced"]){t=t["@@transducer/value"];break}r=n.next()}return e["@@transducer/result"](t)}function O(e,t,n,r){return e["@@transducer/result"](n[r](R(e["@@transducer/step"],e),t))}var T="undefined"!=typeof Symbol?Symbol.iterator:"@@iterator";function N(e,t,n){if("function"==typeof e&&(e=I(e)),w(n))return function(e,t,n){for(var r=0,o=n.length;r<o;){if((t=e["@@transducer/step"](t,n[r]))&&t["@@transducer/reduced"]){t=t["@@transducer/value"];break}r+=1}return e["@@transducer/result"](t)}(e,t,n);if("function"==typeof n["fantasy-land/reduce"])return O(e,t,n,"fantasy-land/reduce");if(null!=n[T])return k(e,t,n[T]());if("function"==typeof n.next)return k(e,t,n);if("function"==typeof n.reduce)return O(e,t,n,"reduce");throw new TypeError("reduce: list must be array or iterable")}var P=function(){function e(e,t){this.xf=t,this.f=e}return e.prototype["@@transducer/init"]=v.init,e.prototype["@@transducer/result"]=v.result,e.prototype["@@transducer/step"]=function(e,t){return this.xf["@@transducer/step"](e,this.f(t))},e}(),_=c(function(e,t){return new P(e,t)});function A(e,t){return Object.prototype.hasOwnProperty.call(t,e)}var j=Object.prototype.toString,U=function(){return"[object Arguments]"===j.call(arguments)?function(e){return"[object Arguments]"===j.call(e)}:function(e){return A("callee",e)}},M=!{toString:null}.propertyIsEnumerable("toString"),C=["constructor","valueOf","isPrototypeOf","toString","propertyIsEnumerable","hasOwnProperty","toLocaleString"],x=function(){return arguments.propertyIsEnumerable("length")}(),D=function(e,t){for(var n=0;n<e.length;){if(e[n]===t)return!0;n+=1}return!1},q=a("function"!=typeof Object.keys||x?function(e){if(Object(e)!==e)return[];var t,n,r=[],o=x&&U(e);for(t in e)!A(t,e)||o&&"length"===t||(r[r.length]=t);if(M)for(n=C.length-1;n>=0;)A(t=C[n],e)&&!D(r,t)&&(r[r.length]=t),n-=1;return r}:function(e){return Object(e)!==e?[]:Object.keys(e)}),B=c(m(["fantasy-land/map","map"],_,function(e,t){switch(Object.prototype.toString.call(t)){case"[object Function]":return d(t.length,function(){return e.call(this,t.apply(this,arguments))});case"[object Object]":return N(function(n,r){return n[r]=e(t[r]),n},{},q(t));default:return b(e,t)}})),L=c(function(e,t){for(var n=t,r=0;r<e.length;){if(null==n)return;n=n[e[r]],r+=1}return n}),H=c(function(e,t){return L([e],t)}),G=p(N),J=c(function(e,t){return h(t,[e])}),F=a(function(e){for(var t=q(e),n=t.length,r=[],o=0;o<n;)r[o]=e[t[o]],o+=1;return r});var z=a(function(e){return d(e.length,e)});var X=function(e){var t=function(e){return{"@@transducer/init":v.init,"@@transducer/result":function(t){return e["@@transducer/result"](t)},"@@transducer/step":function(t,n){var r=e["@@transducer/step"](t,n);return r["@@transducer/reduced"]?{"@@transducer/value":r,"@@transducer/reduced":!0}:r}}}(e);return{"@@transducer/init":v.init,"@@transducer/result":function(e){return t["@@transducer/result"](e)},"@@transducer/step":function(e,n){return w(n)?N(t,e,n):N(t,e,[n])}}},V=c(m(["fantasy-land/chain","chain"],c(function(e,t){return B(e,X(t))}),function(e,t){return"function"==typeof t?function(n){return e(t(n))(n)}:(n=!1,function e(t){for(var r,o,i,s=[],u=0,a=t.length;u<a;){if(w(t[u]))for(i=0,o=(r=n?e(t[u]):t[u]).length;i<o;)s[s.length]=r[i],i+=1;else s[s.length]=t[u];u+=1}return s})(B(e,t));var n})),W=a(function(e){return null===e?"Null":void 0===e?"Undefined":Object.prototype.toString.call(e).slice(8,-1)});function K(e,t){return function(){return t.call(this,e.apply(this,arguments))}}function $(e,t){return function(){var n=arguments.length;if(0===n)return t();var r=arguments[n-1];return g(r)||"function"!=typeof r[e]?t.apply(this,arguments):r[e].apply(r,Array.prototype.slice.call(arguments,0,n-1))}}var Y=p($("slice",function(e,t,n){return Array.prototype.slice.call(n,e,t)})),Z=a($("tail",Y(1,1/0)));function Q(){if(0===arguments.length)throw new Error("pipe requires at least one argument");return l(arguments[0].length,G(K,arguments[0],Z(arguments)))}var ee=a(function(e){return S(e)?e.split("").reverse().join(""):Array.prototype.slice.call(e,0).reverse()});function te(){if(0===arguments.length)throw new Error("compose requires at least one argument");return Q.apply(this,ee(arguments))}function ne(e){for(var t,n=[];!(t=e.next()).done;)n.push(t.value);return n}function re(e,t,n){for(var r=0,o=n.length;r<o;){if(e(t,n[r]))return!0;r+=1}return!1}var oe=c(function(e,t){return e===t?0!==e||1/e==1/t:e!=e&&t!=t});function ie(e,t,n,r){var o=ne(e);function i(e,t){return se(e,t,n.slice(),r.slice())}return!re(function(e,t){return!re(i,t,e)},ne(t),o)}function se(e,t,n,r){if(oe(e,t))return!0;var o,i,s=W(e);if(s!==W(t))return!1;if(null==e||null==t)return!1;if("function"==typeof e["fantasy-land/equals"]||"function"==typeof t["fantasy-land/equals"])return"function"==typeof e["fantasy-land/equals"]&&e["fantasy-land/equals"](t)&&"function"==typeof t["fantasy-land/equals"]&&t["fantasy-land/equals"](e);if("function"==typeof e.equals||"function"==typeof t.equals)return"function"==typeof e.equals&&e.equals(t)&&"function"==typeof t.equals&&t.equals(e);switch(s){case"Arguments":case"Array":case"Object":if("function"==typeof e.constructor&&"Promise"===(o=e.constructor,null==(i=String(o).match(/^function (\w*)/))?"":i[1]))return e===t;break;case"Boolean":case"Number":case"String":if(typeof e!=typeof t||!oe(e.valueOf(),t.valueOf()))return!1;break;case"Date":if(!oe(e.valueOf(),t.valueOf()))return!1;break;case"Error":return e.name===t.name&&e.message===t.message;case"RegExp":if(e.source!==t.source||e.global!==t.global||e.ignoreCase!==t.ignoreCase||e.multiline!==t.multiline||e.sticky!==t.sticky||e.unicode!==t.unicode)return!1}for(var u=n.length-1;u>=0;){if(n[u]===e)return r[u]===t;u-=1}switch(s){case"Map":return e.size===t.size&&ie(e.entries(),t.entries(),n.concat([e]),r.concat([t]));case"Set":return e.size===t.size&&ie(e.values(),t.values(),n.concat([e]),r.concat([t]));case"Arguments":case"Array":case"Object":case"Boolean":case"Number":case"String":case"Date":case"Error":case"RegExp":case"Int8Array":case"Uint8Array":case"Uint8ClampedArray":case"Int16Array":case"Uint16Array":case"Int32Array":case"Uint32Array":case"Float32Array":case"Float64Array":case"ArrayBuffer":break;default:return!1}var a=q(e);if(a.length!==q(t).length)return!1;var c=n.concat([e]),h=r.concat([t]);for(u=a.length-1;u>=0;){var l=a[u];if(!A(l,t)||!se(t[l],e[l],c,h))return!1;u-=1}return!0}var ue=c(function(e,t){return se(e,t,[],[])});function ae(e,t){return function(e,t,n){var r,o;if("function"==typeof e.indexOf)switch(typeof t){case"number":if(0===t){for(r=1/t;n<e.length;){if(0===(o=e[n])&&1/o===r)return n;n+=1}return-1}if(t!=t){for(;n<e.length;){if("number"==typeof(o=e[n])&&o!=o)return n;n+=1}return-1}return e.indexOf(t,n);case"string":case"boolean":case"function":case"undefined":return e.indexOf(t,n);case"object":if(null===t)return e.indexOf(t,n)}for(;n<e.length;){if(ue(e[n],t))return n;n+=1}return-1}(t,e,0)>=0}function ce(e){return'"'+e.replace(/\\/g,"\\\\").replace(/[\b]/g,"\\b").replace(/\f/g,"\\f").replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/\t/g,"\\t").replace(/\v/g,"\\v").replace(/\0/g,"\\0").replace(/"/g,'\\"')+'"'}var he=function(e){return(e<10?"0":"")+e},le="function"==typeof Date.prototype.toISOString?function(e){return e.toISOString()}:function(e){return e.getUTCFullYear()+"-"+he(e.getUTCMonth()+1)+"-"+he(e.getUTCDate())+"T"+he(e.getUTCHours())+":"+he(e.getUTCMinutes())+":"+he(e.getUTCSeconds())+"."+(e.getUTCMilliseconds()/1e3).toFixed(3).slice(2,5)+"Z"};function fe(e){return"[object Object]"===Object.prototype.toString.call(e)}var de=function(){function e(e,t){this.xf=t,this.f=e}return e.prototype["@@transducer/init"]=v.init,e.prototype["@@transducer/result"]=v.result,e.prototype["@@transducer/step"]=function(e,t){return this.f(t)?this.xf["@@transducer/step"](e,t):e},e}(),pe=c(m(["filter"],c(function(e,t){return new de(e,t)}),function(e,t){return fe(t)?N(function(n,r){return e(t[r])&&(n[r]=t[r]),n},{},q(t)):function(e,t){for(var n=0,r=t.length,o=[];n<r;)e(t[n])&&(o[o.length]=t[n]),n+=1;return o}(e,t)})),ge=c(function(e,t){return pe((n=e,function(){return!n.apply(this,arguments)}),t);var n});var me=a(function(e){return function e(t,n){var r=function(r){var o=n.concat([t]);return ae(r,o)?"<Circular>":e(r,o)},o=function(e,t){return b(function(t){return ce(t)+": "+r(e[t])},t.slice().sort())};switch(Object.prototype.toString.call(t)){case"[object Arguments]":return"(function() { return arguments; }("+b(r,t).join(", ")+"))";case"[object Array]":return"["+b(r,t).concat(o(t,ge(function(e){return/^\d+$/.test(e)},q(t)))).join(", ")+"]";case"[object Boolean]":return"object"==typeof t?"new Boolean("+r(t.valueOf())+")":t.toString();case"[object Date]":return"new Date("+(isNaN(t.valueOf())?r(NaN):ce(le(t)))+")";case"[object Null]":return"null";case"[object Number]":return"object"==typeof t?"new Number("+r(t.valueOf())+")":1/t==-1/0?"-0":t.toString(10);case"[object String]":return"object"==typeof t?"new String("+r(t.valueOf())+")":ce(t);case"[object Undefined]":return"undefined";default:if("function"==typeof t.toString){var i=t.toString();if("[object Object]"!==i)return i}return"{"+o(t,q(t)).join(", ")+"}"}}(e,[])}),ve=c(ae),ye=function(){function e(e,t,n,r){this.valueFn=e,this.valueAcc=t,this.keyFn=n,this.xf=r,this.inputs={}}return e.prototype["@@transducer/init"]=v.init,e.prototype["@@transducer/result"]=function(e){var t;for(t in this.inputs)if(A(t,this.inputs)&&(e=this.xf["@@transducer/step"](e,this.inputs[t]))["@@transducer/reduced"]){e=e["@@transducer/value"];break}return this.inputs=null,this.xf["@@transducer/result"](e)},e.prototype["@@transducer/step"]=function(e,t){var n=this.keyFn(t);return this.inputs[n]=this.inputs[n]||[n,this.valueAcc],this.inputs[n][1]=this.valueFn(this.inputs[n][1],t),e},e}(),be=f(4,[],m([],f(4,[],function(e,t,n,r){return new ye(e,t,n,r)}),function(e,t,n,r){return N(function(r,o){var i=n(o);return r[i]=e(A(i,r)?r[i]:t,o),r},{},r)})),Se=c(function(e,t){for(var n=[],r=0,o=e.length;r<o;)ae(e[r],t)||ae(e[r],n)||(n[n.length]=e[r]),r+=1;return n}),we=c(function(e,t){var n=e<0?t.length+e:e;return S(t)?t.charAt(n):t[n]}),Ee=a(function(e){return null!=e&&"function"==typeof e["fantasy-land/empty"]?e["fantasy-land/empty"]():null!=e&&null!=e.constructor&&"function"==typeof e.constructor["fantasy-land/empty"]?e.constructor["fantasy-land/empty"]():null!=e&&"function"==typeof e.empty?e.empty():null!=e&&null!=e.constructor&&"function"==typeof e.constructor.empty?e.constructor.empty():g(e)?[]:S(e)?"":fe(e)?{}:U(e)?function(){return arguments}():void 0}),Ie=c($("forEach",function(e,t){for(var n=t.length,r=0;r<n;)e(t[r]),r+=1;return t})),Re=c(function(e,t){for(var n=q(t),r=0;r<n.length;){var o=n[r];e(t[o],o,t),r+=1}return t}),ke=a(function(e){for(var t={},n=0;n<e.length;)t[e[n][0]]=e[n][1],n+=1;return t}),Oe=c(A),Te=we(0);function Ne(e){return e}var Pe=a(Ne),_e=be(function(e,t){return t},null),Ae=function(){function e(){this._nativeSet="function"==typeof Set?new Set:null,this._items={}}return e.prototype.add=function(e){return!je(e,!0,this)},e.prototype.has=function(e){return je(e,!1,this)},e}();function je(e,t,n){var r,o=typeof e;switch(o){case"string":case"number":return 0===e&&1/e==-1/0?!!n._items["-0"]||(t&&(n._items["-0"]=!0),!1):null!==n._nativeSet?t?(r=n._nativeSet.size,n._nativeSet.add(e),n._nativeSet.size===r):n._nativeSet.has(e):o in n._items?e in n._items[o]||(t&&(n._items[o][e]=!0),!1):(t&&(n._items[o]={},n._items[o][e]=!0),!1);case"boolean":if(o in n._items){var i=e?1:0;return!!n._items[o][i]||(t&&(n._items[o][i]=!0),!1)}return t&&(n._items[o]=e?[!1,!0]:[!0,!1]),!1;case"function":return null!==n._nativeSet?t?(r=n._nativeSet.size,n._nativeSet.add(e),n._nativeSet.size===r):n._nativeSet.has(e):o in n._items?!!ae(e,n._items[o])||(t&&n._items[o].push(e),!1):(t&&(n._items[o]=[e]),!1);case"undefined":return!!n._items[o]||(t&&(n._items[o]=!0),!1);case"object":if(null===e)return!!n._items.null||(t&&(n._items.null=!0),!1);default:return(o=Object.prototype.toString.call(e))in n._items?!!ae(e,n._items[o])||(t&&n._items[o].push(e),!1):(t&&(n._items[o]=[e]),!1)}}var Ue=c(function(e,t){for(var n,r,o=new Ae,i=[],s=0;s<t.length;)n=e(r=t[s]),o.add(n)&&i.push(r),s+=1;return i})(Pe),Me=c(function(e,t){return d(e+1,function(){var n,r=arguments[e];if(null!=r&&(n=r[t],"[object Function]"===Object.prototype.toString.call(n)))return r[t].apply(r,Array.prototype.slice.call(arguments,0,e));throw new TypeError(me(r)+' does not have a method named "'+t+'"')})}),Ce=a(function(e){return null!=e&&ue(e,Ee(e))}),xe=Me(1,"join");var De=a(function(e){return null!=e&&(t=e.length,"[object Number]"===Object.prototype.toString.call(t))?e.length:NaN;var t});var qe=c(function(e,t){for(var n={},r=0;r<e.length;)e[r]in t&&(n[e[r]]=t[e[r]]),r+=1;return n}),Be=c(function(e,t){return Array.prototype.slice.call(t,0).sort(e)}),Le=Me(1,"split"),He=a(function(e){var t=[];for(var n in e)A(n,e)&&(t[t.length]=[n,e[n]]);return t}),Ge="\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff",Je=(String.prototype.trim,"function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e}),Fe=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},ze=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),Xe=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},Ve=function(e,t){var n={};for(var r in e)t.indexOf(r)>=0||Object.prototype.hasOwnProperty.call(e,r)&&(n[r]=e[r]);return n},We=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,o=!1,i=void 0;try{for(var s,u=e[Symbol.iterator]();!(r=(s=u.next()).done)&&(n.push(s.value),!t||n.length!==t);r=!0);}catch(e){o=!0,i=e}finally{try{!r&&u.return&&u.return()}finally{if(o)throw i}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),Ke=Q(pe(function(e){return void 0!==e}),He,B(function(e){var t=We(e,2),n=t[0],r=t[1];return n+"="+encodeURIComponent(r)}),xe("&")),$e=function(e,t){return t+(ve("?",t)?"&":"?")+Ke(e)},Ye=Q(Le("&"),B(Le("=")),ke),Ze=function(e,t,n){var r=void 0===n?"undefined":Je(n);if(r!==t)throw new TypeError("expected "+e+" to be of type "+t+" but was of type "+r)},Qe=function(e,t,n){Ze(e,"object",n),Re(function(e,n){return Ze(n,t,e)},n)},et=function(){return Math.floor(Date.now()/1e3)},tt=function(e){return{createdAt:e.created_at,createdByUserId:e.created_by_id,deletedAt:e.deletedAt,id:e.id,isPrivate:e.private,name:e.name,updatedAt:e.updated_at,userIds:e.member_user_ids}},nt=function(e){return{avatarURL:e.avatar_url,createdAt:e.created_at,customData:e.custom_data,id:e.id,name:e.name,updatedAt:e.updated_at}},rt=function(e){return{lastSeenAt:e.last_seen_at,state:ve(e.state,["online","offline"])?e.state:"unknown",userId:e.user_id}},ot=function(e){return{id:e.id,senderId:e.user_id,roomId:e.room_id,text:e.text,createdAt:e.created_at,updatedAt:e.updated_at,attachment:e.attachment&&ut(e.attachment)}},it=function(e){return{file:{name:e.file.name,bytes:e.file.bytes,lastModified:e.file.last_modified},link:e.resource_link,ttl:e.ttl}},st=function(e){return{position:e.position,updatedAt:e.updated_at,userId:e.user_id,roomId:e.room_id,type:e.cursor_type}},ut=function(e){return{link:e.resource_link,type:e.type,fetchRequired:"true"===(t=e.resource_link,ve("?",t)?Ye(Le("?",t)[1]):{}).chatkit_link};var t},at=function e(){var t=this;Fe(this,e),this.pendingSets=[],this.pendingGets=[],this.initialize=function(e){t.store=e,Ie(function(e){var n=e.key,r=e.value;(0,e.resolve)(t.store[n]=r)},t.pendingSets),Ie(function(e){var n=e.key;(0,e.resolve)(t.store[n])},t.pendingGets)},this.set=function(e,n){return t.store?Promise.resolve(t.store[e]=n):new Promise(function(r){t.pendingSets.push({key:e,value:n,resolve:r})})},this.get=function(e){return t.store?Promise.resolve(t.store[e]):new Promise(function(n){t.pendingGets.push({key:e,resolve:n})})},this.pop=function(e){return t.get(e).then(function(n){return delete t.store[e],n})},this.update=function(e,n){return t.get(e).then(function(r){return t.set(e,n(r))})},this.snapshot=function(){return t.store||{}},this.getSync=function(e){return t.store?t.store[e]:void 0}},ct=function(){function e(t,n){Fe(this,e),this.avatarURL=t.avatarURL,this.createdAt=t.createdAt,this.customData=t.customData,this.id=t.id,this.name=t.name,this.updatedAt=t.updatedAt,this.presenceStore=n}return ze(e,[{key:"presence",get:function(){return this.presenceStore.getSync(this.id)||{lastSeenAt:void 0,state:"unknown",userId:this.id}}}]),e}(),ht=function e(t){var n=this,r=t.instance,o=t.presenceStore,i=t.logger;Fe(this,e),this.store=new at,this.initialize=function(e){n.store.initialize(B(n.decorate,e))},this.set=function(e,t){return n.store.set(e,n.decorate(t))},this.get=function(e){return Promise.all([n.fetchUser(e),n.presenceStore.get(e)]).then(function(e){var t=We(e,2),n=t[0];t[1];return n})},this.fetchUser=function(e){return n.fetchMissingUsers([e]).then(function(){return n.store.get(e)})},this.fetchMissingUsers=function(e){var t=Se(e,B(H("id"),F(n.store.snapshot()))),r=Se(t,q(n.reqs));return De(r)>0&&n.fetchBasicUsers(r),Promise.all(F(qe(e,n.reqs)))},this.fetchBasicUsers=function(e){var t=n.instance.request({method:"GET",path:$e({user_ids:xe(",",e)},"/users_by_ids")}).then(function(t){var r=B(nt,JSON.parse(t));return Ie(function(e){return n.set(e.id,e)},r),Ie(function(e){delete n.reqs[e]},e),r}).catch(function(e){throw n.logger.warn("error fetching missing users:",e),e});Ie(function(e){n.reqs[e]=t},e)},this.snapshot=this.store.snapshot,this.getSync=this.store.getSync,this.decorate=function(e){return e?new ct(e,n.presenceStore):void 0},this.instance=r,this.presenceStore=o,this.logger=i,this.reqs={}},lt=function(){function e(t,n){Fe(this,e),this.createdAt=t.createdAt,this.createdByUserId=t.createdByUserId,this.deletedAt=t.deletedAt,this.id=t.id,this.isPrivate=t.isPrivate,this.name=t.name,this.updatedAt=t.updatedAt,this.userIds=t.userIds,this.userStore=n}return ze(e,[{key:"users",get:function(){var e=this;return pe(function(t){return ve(t.id,e.userIds)},F(this.userStore.snapshot()))}}]),e}(),ft=function e(t){var n=this,r=t.instance,o=t.userStore,i=t.logger;Fe(this,e),this.store=new at,this.initialize=function(e){n.store.initialize(B(n.decorate,e))},this.set=z(function(e,t){return n.store.set(e,n.decorate(t)).then(function(e){return n.userStore.fetchMissingUsers(e.userIds).then(function(){return e})})}),this.get=function(e){return n.store.get(e).then(function(t){return t||n.fetchBasicRoom(e).then(n.set(e))})},this.pop=this.store.pop,this.addUserToRoom=function(e,t){return n.store.update(e,function(e){return e.userIds=Ue(J(t,e.userIds)),e})},this.removeUserFromRoom=function(e,t){return n.store.update(e,function(e){return e.userIds=pe(function(e){return e!==t},e.userIds),e})},this.update=function(e,t){return n.store.update(e,function(e){return e.createdAt=t.createdAt||e.createdAt,e.createdByUserId=t.createdByUserId||e.createdByUserId,e.deletedAt=t.deletedAt||e.deletedAt,e.id=t.id||e.id,e.isPrivate=t.isPrivate||e.isPrivate,e.name=t.name||e.name,e.updatedAt=t.updatedAt||e.updatedAt,e.userIds=t.userIds||e.userIds,e})},this.fetchBasicRoom=function(e){return n.instance.request({method:"GET",path:"/rooms/"+e}).then(Q(JSON.parse,tt)).catch(function(t){n.logger.warn("error fetching details for room "+e+":",t)})},this.snapshot=this.store.snapshot,this.getSync=this.store.getSync,this.decorate=function(e){return e?new lt(e,n.userStore):void 0},this.instance=r,this.userStore=o,this.logger=i},dt=function(){function e(t,n,r){Fe(this,e),this.position=t.position,this.updatedAt=t.updatedAt,this.userId=t.userId,this.roomId=t.roomId,this.type=t.type,this.userStore=n,this.roomStore=r}return ze(e,[{key:"user",get:function(){return this.userStore.getSync(this.userId)}},{key:"room",get:function(){return this.roomStore.getSync(this.roomId)}}]),e}(),pt=function e(t){var n=this,r=t.instance,o=t.userStore,i=t.roomStore,s=t.logger;Fe(this,e),this.store=new at,this.initialize=function(e){n.store.initialize(B(n.decorate,e))},this.set=function(e,t,r){return n.store.set(gt(e,t),n.decorate(r))},this.get=function(e,t){return n.store.get(gt(e,t)).then(function(r){return r||n.fetchBasicCursor(e,t).then(function(r){return n.set(e,t,r)})})},this.getSync=function(e,t){return n.store.getSync(gt(e,t))},this.fetchBasicCursor=function(e,t){return n.instance.request({method:"GET",path:"/cursors/0/rooms/"+t+"/users/"+encodeURIComponent(e)}).then(function(e){var t=JSON.parse(e);if(t)return st(t)}).catch(function(e){throw n.logger.warn("error fetching cursor:",e),e})},this.decorate=function(e){return e?new dt(e,n.userStore,n.roomStore):void 0},this.instance=r,this.userStore=o,this.roomStore=i,this.logger=s},gt=function(e,t){return e+"/"+t},mt=function e(t){var n=this,r=t.hooks,o=t.userId,i=t.instance,s=t.logger;Fe(this,e),this.sendThrottledRequest=function(e){var t=Date.now(),r=n.lastSentRequests[e];return r&&t-r<1e3?Promise.resolve():(n.lastSentRequests[e]=t,n.instance.request({method:"POST",path:"/rooms/"+e+"/events",json:{name:"typing_start",user_id:n.userId}}).catch(function(t){throw delete n.typingRequestSent[e],n.logger.warn("Error sending is_typing event in room "+e,t),t}))},this.onIsTyping=function(e,t){n.timers[e.id]||(n.timers[e.id]={}),n.timers[e.id][t.id]?clearTimeout(n.timers[e.id][t.id]):n.onStarted(e,t),n.timers[e.id][t.id]=setTimeout(function(){n.onStopped(e,t),delete n.timers[e.id][t.id]},1500)},this.onStarted=function(e,t){n.hooks.global.onUserStartedTyping&&n.hooks.global.onUserStartedTyping(e,t),n.hooks.rooms[e.id]&&n.hooks.rooms[e.id].onUserStartedTyping&&n.hooks.rooms[e.id].onUserStartedTyping(t)},this.onStopped=function(e,t){n.hooks.global.onUserStoppedTyping&&n.hooks.global.onUserStoppedTyping(e,t),n.hooks.rooms[e.id]&&n.hooks.rooms[e.id].onUserStoppedTyping&&n.hooks.rooms[e.id].onUserStoppedTyping(t)},this.hooks=r,this.userId=o,this.instance=i,this.logger=s,this.lastSentRequests={},this.timers={}},vt=function(){function e(t){var n=this;Fe(this,e),this.onEvent=function(e){var t=e.body;switch(t.event_name){case"initial_state":n.onInitialState(t.data);break;case"added_to_room":n.onAddedToRoom(t.data);break;case"removed_from_room":n.onRemovedFromRoom(t.data);break;case"user_joined":n.onUserJoined(t.data);break;case"user_left":n.onUserLeft(t.data);break;case"room_updated":n.onRoomUpdated(t.data);break;case"room_deleted":n.onRoomDeleted(t.data);break;case"typing_start":n.onIsTyping(t.data)}},this.onInitialState=function(e){var t=e.current_user,r=e.rooms;n.onSubscriptionEstablished({user:nt(t),basicRooms:B(tt,r)})},this.onAddedToRoom=function(e){var t=e.room,r=tt(t);n.roomStore.set(r.id,r).then(function(e){n.hooks.global.onAddedToRoom&&n.hooks.global.onAddedToRoom(e)})},this.onRemovedFromRoom=function(e){var t=e.room_id;n.roomStore.pop(t).then(function(e){e&&n.hooks.global.onRemovedFromRoom&&n.hooks.global.onRemovedFromRoom(e)})},this.onUserJoined=function(e){var t=e.room_id,r=e.user_id;n.roomStore.addUserToRoom(t,r).then(function(e){n.userStore.get(r).then(function(r){n.hooks.global.onUserJoinedRoom&&n.hooks.global.onUserJoinedRoom(e,r),n.hooks.rooms[t]&&n.hooks.rooms[t].onUserJoined&&n.hooks.rooms[t].onUserJoined(r)})})},this.onUserLeft=function(e){var t=e.room_id,r=e.user_id;n.roomStore.removeUserFromRoom(t,r).then(function(e){n.userStore.get(r).then(function(r){n.hooks.global.onUserLeftRoom&&n.hooks.global.onUserLeftRoom(e,r),n.hooks.rooms[t]&&n.hooks.rooms[t].onUserLeft&&n.hooks.rooms[t].onUserLeft(r)})})},this.onRoomUpdated=function(e){var t=e.room,r=tt(t);n.roomStore.update(r.id,r).then(function(e){n.hooks.global.onRoomUpdated&&n.hooks.global.onRoomUpdated(e)})},this.onRoomDeleted=function(e){var t=e.room_id;n.roomStore.pop(t).then(function(e){e&&n.hooks.global.onRoomDeleted&&n.hooks.global.onRoomDeleted(e)})},this.onIsTyping=function(e){var t=e.room_id,r=e.user_id;Promise.all([n.roomStore.get(t),n.userStore.get(r)]).then(function(e){var t=We(e,2),r=t[0],o=t[1];return n.typingIndicators.onIsTyping(r,o)})},this.userId=t.userId,this.hooks=t.hooks,this.instance=t.instance,this.userStore=t.userStore,this.roomStore=t.roomStore,this.typingIndicators=t.typingIndicators,this.roomSubscriptions=t.roomSubscriptions,this.logger=t.logger,this.connectionTimeout=t.connectionTimeout}return ze(e,[{key:"connect",value:function(){var e=this;return new Promise(function(t,n){e.timeout=setTimeout(function(){n(new Error("user subscription timed out"))},e.connectionTimeout),e.onSubscriptionEstablished=function(n){clearTimeout(e.timeout),t(n)},e.sub=e.instance.subscribeNonResuming({path:"/users",listeners:{onError:function(t){clearTimeout(e.timeout),n(t)},onEvent:e.onEvent}})})}},{key:"cancel",value:function(){clearTimeout(this.timeout);try{this.sub&&this.sub.unsubscribe()}catch(e){this.logger.debug("error when cancelling user subscription",e)}}}]),e}(),yt=function(){function e(t){var n=this;Fe(this,e),this.onEvent=function(e){var t=e.body;switch(t.event_name){case"initial_state":n.onInitialState(t.data);break;case"presence_update":n.onPresenceUpdate(t.data);break;case"join_room_presence_update":n.onJoinRoomPresenceUpdate(t.data)}},this.onInitialState=function(e){var t=e.user_states;n.presenceStore.initialize(_e(H("userId"),B(rt,t))),n.onSubscriptionEstablished()},this.onPresenceUpdate=function(e){var t=rt(e);n.presenceStore.set(t.userId,t).then(function(e){return n.userStore.get(e.userId).then(function(t){switch(e.state){case"online":n.onCameOnline(t);break;case"offline":n.onWentOffline(t)}})})},this.onJoinRoomPresenceUpdate=function(e){var t=e.user_states;return Ie(function(e){return n.presenceStore.set(e.userId,e)},B(rt,t))},this.onCameOnline=function(e){return n.callRelevantHooks("onUserCameOnline",e)},this.onWentOffline=function(e){return n.callRelevantHooks("onUserWentOffline",e)},this.callRelevantHooks=function(e,t){n.hooks.global[e]&&n.hooks.global[e](t),te(Ie(function(r){var o=We(r,2),i=o[0],s=o[1];return n.roomStore.get(i).then(function(n){ve(t.id,n.userIds)&&s[e](t)})}),pe(function(t){var n=We(t,2);n[0];return void 0!==n[1][e]}),He)(n.hooks.rooms)},this.userId=t.userId,this.hooks=t.hooks,this.instance=t.instance,this.userStore=t.userStore,this.roomStore=t.roomStore,this.presenceStore=t.presenceStore,this.logger=t.logger,this.connectionTimeout=t.connectionTimeout}return ze(e,[{key:"connect",value:function(){var e=this;return new Promise(function(t,n){e.timeout=setTimeout(function(){n(new Error("presence subscription timed out"))},e.connectionTimeout),e.onSubscriptionEstablished=function(n){clearTimeout(e.timeout),t(n)},e.sub=e.instance.subscribeNonResuming({path:"/users/"+encodeURIComponent(e.userId)+"/presence",listeners:{onError:function(t){clearTimeout(e.timeout),n(t)},onEvent:e.onEvent}})})}},{key:"cancel",value:function(){clearTimeout(this.timeout);try{this.sub&&this.sub.unsubscribe()}catch(e){this.logger.debug("error when cancelling presence subscription",e)}}}]),e}(),bt=function(){function e(t){var n=this;Fe(this,e),this.onEvent=function(e){var t=e.body;switch(t.event_name){case"initial_state":n.onInitialState(t.data);break;case"new_cursor":n.onNewCursor(t.data)}},this.onInitialState=function(e){var t=e.cursors;te(Ie(function(e){return n.cursorStore.set(e.userId,e.roomId,e)}),B(st))(t),n.onSubscriptionEstablished()},this.onNewCursor=function(e){var t=st(e);n.cursorStore.set(t.userId,t.roomId,t).then(function(){n.cursorStore.get(t.userId,t.roomId).then(n.onNewCursorHook)})},this.onNewCursorHook=t.onNewCursorHook,this.path=t.path,this.cursorStore=t.cursorStore,this.instance=t.instance,this.logger=t.logger,this.connectionTimeout=t.connectionTimeout}return ze(e,[{key:"connect",value:function(){var e=this;return new Promise(function(t,n){e.timeout=setTimeout(function(){n(new Error("cursor subscription timed out"))},e.connectionTimeout),e.onSubscriptionEstablished=function(n){clearTimeout(e.timeout),t(n)},e.sub=e.instance.subscribeNonResuming({path:e.path,listeners:{onError:function(t){clearTimeout(e.timeout),n(t)},onEvent:e.onEvent}})})}},{key:"cancel",value:function(){clearTimeout(this.timeout);try{this.sub&&this.sub.unsubscribe()}catch(e){this.logger.debug("error when cancelling cursor subscription",e)}}}]),e}(),St=function(){function e(t,n,r){Fe(this,e),this.id=t.id,this.senderId=t.senderId,this.roomId=t.roomId,this.text=t.text,this.attachment=t.attachment,this.createdAt=t.createdAt,this.updatedAt=t.updatedAt,this.userStore=n,this.roomStore=r}return ze(e,[{key:"sender",get:function(){return this.userStore.getSync(this.senderId)}},{key:"room",get:function(){return this.roomStore.getSync(this.roomId)}}]),e}(),wt=function(){function e(t){var n=this;Fe(this,e),this.onEvent=function(e){var t=e.body;switch(t.event_name){case"new_message":n.onNewMessage(t.data)}},this.onNewMessage=function(e){var t={message:new St(ot(e),n.userStore,n.roomStore),ready:!1};n.messageBuffer.push(t),n.userStore.fetchMissingUsers([t.message.senderId]).catch(function(e){n.logger.error("error fetching missing user information:",e)}).then(function(){t.ready=!0,n.flushBuffer()})},this.flushBuffer=function(){for(;!Ce(n.messageBuffer)&&Te(n.messageBuffer).ready;){var e=n.messageBuffer.shift().message;n.hooks.rooms[n.roomId]&&n.hooks.rooms[n.roomId].onNewMessage&&n.hooks.rooms[n.roomId].onNewMessage(e)}},this.roomId=t.roomId,this.hooks=t.hooks,this.messageLimit=t.messageLimit,this.userId=t.userId,this.instance=t.instance,this.userStore=t.userStore,this.roomStore=t.roomStore,this.messageBuffer=[],this.logger=t.logger}return ze(e,[{key:"connect",value:function(){var e=this;return new Promise(function(t,n){e.sub=e.instance.subscribeResuming({path:"/rooms/"+e.roomId+"?"+Ke({message_limit:e.messageLimit}),listeners:{onOpen:t,onError:n,onEvent:e.onEvent}})})}},{key:"cancel",value:function(){try{this.sub&&this.sub.unsubscribe()}catch(e){this.logger.debug("error when cancelling message subscription",e)}}}]),e}(),Et=function(){function e(t){var n=t.messageSub,r=t.cursorSub;Fe(this,e),this.messageSub=n,this.cursorSub=r}return ze(e,[{key:"cancel",value:function(){this.messageSub.cancel(),this.cursorSub.cancel()}}]),e}(),It=function(){function e(t){var n=t.apiInstance,r=t.connectionTimeout,o=t.cursorsInstance,i=t.filesInstance,s=t.hooks,u=t.id,a=t.presenceInstance;Fe(this,e),Rt.call(this),this.hooks={global:s,rooms:{}},this.id=u,this.encodedId=encodeURIComponent(this.id),this.apiInstance=n,this.filesInstance=i,this.cursorsInstance=o,this.connectionTimeout=r,this.presenceInstance=a,this.logger=n.logger,this.presenceStore=new at,this.userStore=new ht({instance:this.apiInstance,presenceStore:this.presenceStore,logger:this.logger}),this.roomStore=new ft({instance:this.apiInstance,userStore:this.userStore,logger:this.logger}),this.cursorStore=new pt({instance:this.cursorsInstance,userStore:this.userStore,roomStore:this.roomStore,logger:this.logger}),this.typingIndicators=new mt({hooks:this.hooks,userId:this.id,instance:this.apiInstance,logger:this.logger}),this.roomSubscriptions={},this.readCursorBuffer={}}return ze(e,[{key:"rooms",get:function(){return F(this.roomStore.snapshot())}},{key:"users",get:function(){return F(this.userStore.snapshot())}}]),e}(),Rt=function(){var e=this;this.setReadCursor=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.roomId,r=t.position;return Ze("roomId","number",n),Ze("position","number",r),new Promise(function(t,o){void 0!==e.readCursorBuffer[n]?(e.readCursorBuffer[n].position=y(e.readCursorBuffer[n].position,r),e.readCursorBuffer[n].callbacks.push({resolve:t,reject:o})):(e.readCursorBuffer[n]={position:r,callbacks:[{resolve:t,reject:o}]},setTimeout(function(){e.setReadCursorRequest(Xe({roomId:n},e.readCursorBuffer[n])),delete e.readCursorBuffer[n]},500))})},this.readCursor=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.roomId,r=t.userId,o=void 0===r?e.id:r;if(Ze("roomId","number",n),Ze("userId","string",o),o!==e.id&&!Oe(n,e.roomSubscriptions)){var i=new TypeError("Must be subscribed to room "+n+" to access member's read cursors");throw e.logger.error(i),i}return e.cursorStore.getSync(o,n)},this.isTypingIn=function(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).roomId;return Ze("roomId","number",t),e.typingIndicators.sendThrottledRequest(t)},this.createRoom=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.name,r=t.addUserIds,o=Ve(t,["name","addUserIds"]);return n&&Ze("name","string",n),r&&function(e,t,n){if(!Array.isArray(n))throw new TypeError("expected "+e+" to be an array");n.forEach(function(n,r){return Ze(e+"["+r+"]",t,n)})}("addUserIds","string",r),e.apiInstance.request({method:"POST",path:"/rooms",json:{created_by_id:e.id,name:n,private:!!o.private,user_ids:r}}).then(function(t){var n=tt(JSON.parse(t));return e.roomStore.set(n.id,n)}).catch(function(t){throw e.logger.warn("error creating room:",t),t})},this.getJoinableRooms=function(){return e.apiInstance.request({method:"GET",path:"/users/"+e.encodedId+"/rooms?joinable=true"}).then(Q(JSON.parse,B(tt))).catch(function(t){throw e.logger.warn("error getting joinable rooms:",t),t})},this.joinRoom=function(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).roomId;return Ze("roomId","number",t),e.isMemberOf(t)?e.roomStore.get(t):e.apiInstance.request({method:"POST",path:"/users/"+e.encodedId+"/rooms/"+t+"/join"}).then(function(t){var n=tt(JSON.parse(t));return e.roomStore.set(n.id,n)}).catch(function(n){throw e.logger.warn("error joining room "+t+":",n),n})},this.leaveRoom=function(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).roomId;return Ze("roomId","number",t),e.roomStore.get(t).then(function(n){return e.apiInstance.request({method:"POST",path:"/users/"+e.encodedId+"/rooms/"+t+"/leave"}).then(function(){return e.roomStore.pop(t)}).then(function(){return n})}).catch(function(n){throw e.logger.warn("error leaving room "+t+":",n),n})},this.addUserToRoom=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.userId,r=t.roomId;return Ze("userId","string",n),Ze("roomId","number",r),e.apiInstance.request({method:"PUT",path:"/rooms/"+r+"/users/add",json:{user_ids:[n]}}).then(function(){return e.roomStore.addUserToRoom(r,n)}).catch(function(t){throw e.logger.warn("error adding user "+n+" to room "+r+":",t),t})},this.removeUserFromRoom=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.userId,r=t.roomId;return Ze("userId","string",n),Ze("roomId","number",r),e.apiInstance.request({method:"PUT",path:"/rooms/"+r+"/users/remove",json:{user_ids:[n]}}).then(function(){return e.roomStore.removeUserFromRoom(r,n)}).catch(function(t){throw e.logger.warn("error removing user "+n+" from room "+r+":",t),t})},this.sendMessage=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.text,r=t.roomId,o=t.attachment;return Ze("text","string",n),Ze("roomId","number",r),new Promise(function(t,n){void 0!==o&&kt(o)?t(e.uploadDataAttachment(r,o)):void 0!==o&&Ot(o)?t({resource_link:o.link,type:o.type}):void 0!==o?n(new TypeError("attachment was malformed")):t()}).then(function(t){return e.apiInstance.request({method:"POST",path:"/rooms/"+r+"/messages",json:{text:n,attachment:t}})}).then(Q(JSON.parse,H("message_id"))).catch(function(t){throw e.logger.warn("error sending message to room "+r+":",t),t})},this.fetchMessages=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.roomId,r=t.initialId,o=t.limit,i=t.direction;return Ze("roomId","number",n),r&&Ze("initialId","number",r),o&&Ze("limit","number",o),i&&function(e,t,n){if(!ve(n,t))throw new TypeError("expected "+e+" to be one of "+t+" but was "+n)}("direction",["older","newer"],i),e.apiInstance.request({method:"GET",path:"/rooms/"+n+"/messages?"+Ke({initial_id:r,limit:o,direction:i})}).then(function(t){var n=B(te(e.decorateMessage,ot),JSON.parse(t));return e.userStore.fetchMissingUsers(Ue(B(H("senderId"),n))).then(function(){return Be(function(e,t){return e.id-t.id},n)})}).catch(function(t){throw e.logger.warn("error fetching messages from room "+n+":",t),t})},this.subscribeToRoom=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.roomId,r=t.hooks,o=void 0===r?{}:r,i=t.messageLimit;return Ze("roomId","number",n),Qe("hooks","function",o),i&&Ze("messageLimit","number",i),e.roomSubscriptions[n]&&e.roomSubscriptions[n].cancel(),e.hooks.rooms[n]=o,e.roomSubscriptions[n]=new Et({messageSub:new wt({roomId:n,hooks:e.hooks,messageLimit:i,userId:e.id,instance:e.apiInstance,userStore:e.userStore,roomStore:e.roomStore,logger:e.logger}),cursorSub:new bt({onNewCursorHook:function(t){e.hooks.rooms[n]&&e.hooks.rooms[n].onNewReadCursor&&0===t.type&&t.userId!==e.id&&e.hooks.rooms[n].onNewReadCursor(t)},path:"/cursors/0/rooms/"+n,cursorStore:e.cursorStore,instance:e.cursorsInstance,logger:e.logger,connectionTimeout:e.connectionTimeout})}),e.joinRoom({roomId:n}).then(function(t){return Promise.all([e.roomSubscriptions[n].messageSub.connect(),e.roomSubscriptions[n].cursorSub.connect()]).then(function(){return t})}).catch(function(t){throw e.logger.warn("error subscribing to room "+n+":",t),t})},this.fetchAttachment=function(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).url;return e.filesInstance.tokenProvider.fetchToken().then(function(e){return s({method:"GET",headers:{Authorization:"Bearer "+e},url:t})}).then(Q(JSON.parse,it)).catch(function(t){throw e.logger.warn("error fetching attachment:",t),t})},this.updateRoom=function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=t.roomId,r=t.name,o=Ve(t,["roomId","name"]);return Ze("roomId","number",n),r&&Ze("name","string",r),o.private&&Ze("private","boolean",o.private),e.apiInstance.request({method:"PUT",path:"/rooms/"+n,json:{name:r,private:o.private}}).then(function(){}).catch(function(t){throw e.logger.warn("error updating room:",t),t})},this.deleteRoom=function(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).roomId;return Ze("roomId","number",t),e.apiInstance.request({method:"DELETE",path:"/rooms/"+t}).then(function(){}).catch(function(t){throw e.logger.warn("error deleting room:",t),t})},this.setReadCursorRequest=function(t){var n=t.roomId,r=t.position,o=t.callbacks;return e.cursorsInstance.request({method:"PUT",path:"/cursors/0/rooms/"+n+"/users/"+e.encodedId,json:{position:r}}).then(function(){return B(function(e){return e.resolve()},o)}).catch(function(t){e.logger.warn("error setting cursor:",t),B(function(e){return e.reject(t)},o)})},this.uploadDataAttachment=function(t,n){var r=n.file,o=n.name,i=new FormData;return i.append("file",r,o),e.filesInstance.request({method:"POST",path:"/rooms/"+t+"/users/"+e.encodedId+"/files/"+o,body:i}).then(JSON.parse)},this.isMemberOf=function(t){return ve(t,B(H("id"),e.rooms))},this.decorateMessage=function(t){return new St(t,e.userStore,e.roomStore)},this.establishUserSubscription=function(){return e.userSubscription=new vt({hooks:e.hooks,userId:e.id,instance:e.apiInstance,userStore:e.userStore,roomStore:e.roomStore,typingIndicators:e.typingIndicators,logger:e.logger,connectionTimeout:e.connectionTimeout}),e.userSubscription.connect().then(function(t){var n=t.user,r=t.basicRooms;e.avatarURL=n.avatarURL,e.createdAt=n.createdAt,e.customData=n.customData,e.name=n.name,e.updatedAt=n.updatedAt,e.roomStore.initialize(_e(H("id"),r))}).then(e.initializeUserStore).catch(function(t){throw e.logger.error("error establishing user subscription:",t),t})},this.establishPresenceSubscription=function(){return e.presenceSubscription=new yt({hooks:e.hooks,userId:e.id,instance:e.presenceInstance,userStore:e.userStore,roomStore:e.roomStore,presenceStore:e.presenceStore,logger:e.logger,connectionTimeout:e.connectionTimeout}),e.presenceSubscription.connect().catch(function(t){throw e.logger.error("error establishing presence subscription:",t),t})},this.establishCursorSubscription=function(){return e.cursorSubscription=new bt({onNewCursorHook:function(t){e.hooks.global.onNewReadCursor&&0===t.type&&e.isMemberOf(t.roomId)&&e.hooks.global.onNewReadCursor(t)},path:"/cursors/0/users/"+e.encodedId,cursorStore:e.cursorStore,instance:e.cursorsInstance,logger:e.logger,connectionTimeout:e.connectionTimeout}),e.cursorSubscription.connect().then(function(){return e.cursorStore.initialize({})}).catch(function(t){throw e.logger.error("error establishing cursor subscription:",t),t})},this.initializeUserStore=function(){return e.userStore.fetchMissingUsers(Ue(V(H("userIds"),e.rooms))).catch(function(t){e.logger.warn("error fetching initial user information:",t)}).then(function(){return e.userStore.initialize({})})},this.disconnect=function(){e.userSubscription.cancel(),e.presenceSubscription.cancel(),e.cursorSubscription.cancel(),Re(function(e){return e.cancel()},e.roomSubscriptions)}},kt=function(e){var t=e.file,n=e.name;return void 0!==t&&void 0!==n&&(Ze("attachment.file","object",t),Ze("attachment.name","string",n),!0)},Ot=function(e){var t=e.link,n=e.type;return void 0!==t&&void 0!==n&&(Ze("attachment.link","string",t),Ze("attachment.type","string",n),!0)};return{TokenProvider:function e(){var t=this,n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=n.url,o=n.queryParams,i=n.headers;Fe(this,e),this.fetchToken=function(){return t.cacheIsStale()?(t.req||t.fetchFreshToken()).then(function(e){var n=e.token,r=e.expiresIn;return t.cache(n,r),n}):Promise.resolve(t.cachedToken)},this.fetchFreshToken=function(){return t.req=s({method:"POST",url:$e(Xe({user_id:t.userId},t.queryParams),t.url),body:Ke({grant_type:"client_credentials"}),headers:Xe({"content-type":"application/x-www-form-urlencoded"},t.headers)}).then(function(e){var n=JSON.parse(e),r=n.access_token,o=n.expires_in;return delete t.req,{token:r,expiresIn:o}}).catch(function(e){throw delete t.req,e}),t.req},this.cacheIsStale=function(){return!t.cachedToken||et()>t.cacheExpiresAt},this.cache=function(e,n){t.cachedToken=e,t.cacheExpiresAt=et()+n},this.clearCache=function(){t.cachedToken=void 0,t.cacheExpiresAt=void 0},this.setUserId=function(e){t.clearCache(),t.userId=e},Ze("url","string",r),o&&Ze("queryParams","object",o),i&&Ze("headers","object",i),this.url=r,this.queryParams=o,this.headers=i},ChatManager:function e(){var t=this,n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},s=n.instanceLocator,u=n.tokenProvider,a=n.userId,c=Ve(n,["instanceLocator","tokenProvider","userId"]);Fe(this,e),this.connect=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};Qe("hooks","function",e);var n=new It({hooks:e,id:t.userId,apiInstance:t.apiInstance,filesInstance:t.filesInstance,cursorsInstance:t.cursorsInstance,presenceInstance:t.presenceInstance,connectionTimeout:t.connectionTimeout});return Promise.all([n.establishUserSubscription(),n.establishPresenceSubscription(),n.establishCursorSubscription()]).then(function(){return t.currentUser=n,n})},this.disconnect=function(){t.currentUser&&t.currentUser.disconnect()},Ze("instanceLocator","string",s),Ze("tokenProvider","object",u),Ze("tokenProvider.fetchToken","function",u.fetchToken),Ze("userId","string",a);var h=Le(":",s)[1];if(void 0===h)throw new TypeError("expected instanceLocator to be of the format x:y:z, but was "+s);var l=c.baseClient||new r({host:h+"."+o,logger:c.logger,sdkProduct:"chatkit",sdkVersion:"0.7.18"});"function"==typeof u.setUserId&&u.setUserId(a);var f={client:l,locator:s,logger:c.logger,tokenProvider:u};this.apiInstance=new i(Xe({serviceName:"chatkit",serviceVersion:"v1"},f)),this.filesInstance=new i(Xe({serviceName:"chatkit_files",serviceVersion:"v1"},f)),this.cursorsInstance=new i(Xe({serviceName:"chatkit_cursors",serviceVersion:"v1"},f)),this.presenceInstance=new i(Xe({serviceName:"chatkit_presence",serviceVersion:"v1"},f)),this.userId=a,this.connectionTimeout=c.connectionTimeout||2e4}}});
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/assert/assert.js":
+/*!***************************************!*\
+  !*** ./node_modules/assert/assert.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
+// original notice:
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+function compare(a, b) {
+  if (a === b) {
+    return 0;
+  }
+
+  var x = a.length;
+  var y = b.length;
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i];
+      y = b[i];
+      break;
+    }
+  }
+
+  if (x < y) {
+    return -1;
+  }
+  if (y < x) {
+    return 1;
+  }
+  return 0;
+}
+function isBuffer(b) {
+  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
+    return global.Buffer.isBuffer(b);
+  }
+  return !!(b != null && b._isBuffer);
+}
+
+// based on node assert, original notice:
+
+// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+//
+// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
+//
+// Originally from narwhal.js (http://narwhaljs.org)
+// Copyright (c) 2009 Thomas Robinson <280north.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the 'Software'), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = __webpack_require__(/*! util/ */ "./node_modules/util/util.js");
+var hasOwn = Object.prototype.hasOwnProperty;
+var pSlice = Array.prototype.slice;
+var functionsHaveNames = (function () {
+  return function foo() {}.name === 'foo';
+}());
+function pToString (obj) {
+  return Object.prototype.toString.call(obj);
+}
+function isView(arrbuf) {
+  if (isBuffer(arrbuf)) {
+    return false;
+  }
+  if (typeof global.ArrayBuffer !== 'function') {
+    return false;
+  }
+  if (typeof ArrayBuffer.isView === 'function') {
+    return ArrayBuffer.isView(arrbuf);
+  }
+  if (!arrbuf) {
+    return false;
+  }
+  if (arrbuf instanceof DataView) {
+    return true;
+  }
+  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
+    return true;
+  }
+  return false;
+}
+// 1. The assert module provides functions that throw
+// AssertionError's when particular conditions are not met. The
+// assert module must conform to the following interface.
+
+var assert = module.exports = ok;
+
+// 2. The AssertionError is defined in assert.
+// new assert.AssertionError({ message: message,
+//                             actual: actual,
+//                             expected: expected })
+
+var regex = /\s*function\s+([^\(\s]*)\s*/;
+// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
+function getName(func) {
+  if (!util.isFunction(func)) {
+    return;
+  }
+  if (functionsHaveNames) {
+    return func.name;
+  }
+  var str = func.toString();
+  var match = str.match(regex);
+  return match && match[1];
+}
+assert.AssertionError = function AssertionError(options) {
+  this.name = 'AssertionError';
+  this.actual = options.actual;
+  this.expected = options.expected;
+  this.operator = options.operator;
+  if (options.message) {
+    this.message = options.message;
+    this.generatedMessage = false;
+  } else {
+    this.message = getMessage(this);
+    this.generatedMessage = true;
+  }
+  var stackStartFunction = options.stackStartFunction || fail;
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, stackStartFunction);
+  } else {
+    // non v8 browsers so we can have a stacktrace
+    var err = new Error();
+    if (err.stack) {
+      var out = err.stack;
+
+      // try to strip useless frames
+      var fn_name = getName(stackStartFunction);
+      var idx = out.indexOf('\n' + fn_name);
+      if (idx >= 0) {
+        // once we have located the function frame
+        // we need to strip out everything before it (and its line)
+        var next_line = out.indexOf('\n', idx + 1);
+        out = out.substring(next_line + 1);
+      }
+
+      this.stack = out;
+    }
+  }
+};
+
+// assert.AssertionError instanceof Error
+util.inherits(assert.AssertionError, Error);
+
+function truncate(s, n) {
+  if (typeof s === 'string') {
+    return s.length < n ? s : s.slice(0, n);
+  } else {
+    return s;
+  }
+}
+function inspect(something) {
+  if (functionsHaveNames || !util.isFunction(something)) {
+    return util.inspect(something);
+  }
+  var rawname = getName(something);
+  var name = rawname ? ': ' + rawname : '';
+  return '[Function' +  name + ']';
+}
+function getMessage(self) {
+  return truncate(inspect(self.actual), 128) + ' ' +
+         self.operator + ' ' +
+         truncate(inspect(self.expected), 128);
+}
+
+// At present only the three keys mentioned above are used and
+// understood by the spec. Implementations or sub modules can pass
+// other keys to the AssertionError's constructor - they will be
+// ignored.
+
+// 3. All of the following functions must throw an AssertionError
+// when a corresponding condition is not met, with a message that
+// may be undefined if not provided.  All assertion methods provide
+// both the actual and expected values to the assertion error for
+// display purposes.
+
+function fail(actual, expected, message, operator, stackStartFunction) {
+  throw new assert.AssertionError({
+    message: message,
+    actual: actual,
+    expected: expected,
+    operator: operator,
+    stackStartFunction: stackStartFunction
+  });
+}
+
+// EXTENSION! allows for well behaved errors defined elsewhere.
+assert.fail = fail;
+
+// 4. Pure assertion tests whether a value is truthy, as determined
+// by !!guard.
+// assert.ok(guard, message_opt);
+// This statement is equivalent to assert.equal(true, !!guard,
+// message_opt);. To test strictly for the value true, use
+// assert.strictEqual(true, guard, message_opt);.
+
+function ok(value, message) {
+  if (!value) fail(value, true, message, '==', assert.ok);
+}
+assert.ok = ok;
+
+// 5. The equality assertion tests shallow, coercive equality with
+// ==.
+// assert.equal(actual, expected, message_opt);
+
+assert.equal = function equal(actual, expected, message) {
+  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
+};
+
+// 6. The non-equality assertion tests for whether two objects are not equal
+// with != assert.notEqual(actual, expected, message_opt);
+
+assert.notEqual = function notEqual(actual, expected, message) {
+  if (actual == expected) {
+    fail(actual, expected, message, '!=', assert.notEqual);
+  }
+};
+
+// 7. The equivalence assertion tests a deep equality relation.
+// assert.deepEqual(actual, expected, message_opt);
+
+assert.deepEqual = function deepEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
+  }
+};
+
+assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
+  }
+};
+
+function _deepEqual(actual, expected, strict, memos) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if (isBuffer(actual) && isBuffer(expected)) {
+    return compare(actual, expected) === 0;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (util.isDate(actual) && util.isDate(expected)) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3 If the expected value is a RegExp object, the actual value is
+  // equivalent if it is also a RegExp object with the same source and
+  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
+  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+    return actual.source === expected.source &&
+           actual.global === expected.global &&
+           actual.multiline === expected.multiline &&
+           actual.lastIndex === expected.lastIndex &&
+           actual.ignoreCase === expected.ignoreCase;
+
+  // 7.4. Other pairs that do not both pass typeof value == 'object',
+  // equivalence is determined by ==.
+  } else if ((actual === null || typeof actual !== 'object') &&
+             (expected === null || typeof expected !== 'object')) {
+    return strict ? actual === expected : actual == expected;
+
+  // If both values are instances of typed arrays, wrap their underlying
+  // ArrayBuffers in a Buffer each to increase performance
+  // This optimization requires the arrays to have the same type as checked by
+  // Object.prototype.toString (aka pToString). Never perform binary
+  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
+  // bit patterns are not identical.
+  } else if (isView(actual) && isView(expected) &&
+             pToString(actual) === pToString(expected) &&
+             !(actual instanceof Float32Array ||
+               actual instanceof Float64Array)) {
+    return compare(new Uint8Array(actual.buffer),
+                   new Uint8Array(expected.buffer)) === 0;
+
+  // 7.5 For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical 'prototype' property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else if (isBuffer(actual) !== isBuffer(expected)) {
+    return false;
+  } else {
+    memos = memos || {actual: [], expected: []};
+
+    var actualIndex = memos.actual.indexOf(actual);
+    if (actualIndex !== -1) {
+      if (actualIndex === memos.expected.indexOf(expected)) {
+        return true;
+      }
+    }
+
+    memos.actual.push(actual);
+    memos.expected.push(expected);
+
+    return objEquiv(actual, expected, strict, memos);
+  }
+}
+
+function isArguments(object) {
+  return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv(a, b, strict, actualVisitedObjects) {
+  if (a === null || a === undefined || b === null || b === undefined)
+    return false;
+  // if one is a primitive, the other must be same
+  if (util.isPrimitive(a) || util.isPrimitive(b))
+    return a === b;
+  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
+    return false;
+  var aIsArgs = isArguments(a);
+  var bIsArgs = isArguments(b);
+  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
+    return false;
+  if (aIsArgs) {
+    a = pSlice.call(a);
+    b = pSlice.call(b);
+    return _deepEqual(a, b, strict);
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b);
+  var key, i;
+  // having the same number of owned properties (keys incorporates
+  // hasOwnProperty)
+  if (ka.length !== kb.length)
+    return false;
+  //the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  //~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] !== kb[i])
+      return false;
+  }
+  //equivalent values for every corresponding key, and
+  //~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
+      return false;
+  }
+  return true;
+}
+
+// 8. The non-equivalence assertion tests for any deep inequality.
+// assert.notDeepEqual(actual, expected, message_opt);
+
+assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
+  }
+};
+
+assert.notDeepStrictEqual = notDeepStrictEqual;
+function notDeepStrictEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
+  }
+}
+
+
+// 9. The strict equality assertion tests strict equality, as determined by ===.
+// assert.strictEqual(actual, expected, message_opt);
+
+assert.strictEqual = function strictEqual(actual, expected, message) {
+  if (actual !== expected) {
+    fail(actual, expected, message, '===', assert.strictEqual);
+  }
+};
+
+// 10. The strict non-equality assertion tests for strict inequality, as
+// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
+
+assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
+  if (actual === expected) {
+    fail(actual, expected, message, '!==', assert.notStrictEqual);
+  }
+};
+
+function expectedException(actual, expected) {
+  if (!actual || !expected) {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
+    return expected.test(actual);
+  }
+
+  try {
+    if (actual instanceof expected) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore.  The instanceof check doesn't work for arrow functions.
+  }
+
+  if (Error.isPrototypeOf(expected)) {
+    return false;
+  }
+
+  return expected.call({}, actual) === true;
+}
+
+function _tryBlock(block) {
+  var error;
+  try {
+    block();
+  } catch (e) {
+    error = e;
+  }
+  return error;
+}
+
+function _throws(shouldThrow, block, expected, message) {
+  var actual;
+
+  if (typeof block !== 'function') {
+    throw new TypeError('"block" argument must be a function');
+  }
+
+  if (typeof expected === 'string') {
+    message = expected;
+    expected = null;
+  }
+
+  actual = _tryBlock(block);
+
+  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
+            (message ? ' ' + message : '.');
+
+  if (shouldThrow && !actual) {
+    fail(actual, expected, 'Missing expected exception' + message);
+  }
+
+  var userProvidedMessage = typeof message === 'string';
+  var isUnwantedException = !shouldThrow && util.isError(actual);
+  var isUnexpectedException = !shouldThrow && actual && !expected;
+
+  if ((isUnwantedException &&
+      userProvidedMessage &&
+      expectedException(actual, expected)) ||
+      isUnexpectedException) {
+    fail(actual, expected, 'Got unwanted exception' + message);
+  }
+
+  if ((shouldThrow && actual && expected &&
+      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
+    throw actual;
+  }
+}
+
+// 11. Expected to throw an error:
+// assert.throws(block, Error_opt, message_opt);
+
+assert.throws = function(block, /*optional*/error, /*optional*/message) {
+  _throws(true, block, error, message);
+};
+
+// EXTENSION! This is annoying to write outside this module.
+assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
+  _throws(false, block, error, message);
+};
+
+assert.ifError = function(err) { if (err) throw err; };
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    if (hasOwn.call(obj, key)) keys.push(key);
+  }
+  return keys;
+};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/inherits/inherits_browser.js":
+/*!***************************************************!*\
+  !*** ./node_modules/inherits/inherits_browser.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
 
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
@@ -24261,6 +25006,620 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/util/support/isBufferBrowser.js":
+/*!******************************************************!*\
+  !*** ./node_modules/util/support/isBufferBrowser.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function isBuffer(arg) {
+  return arg && typeof arg === 'object'
+    && typeof arg.copy === 'function'
+    && typeof arg.fill === 'function'
+    && typeof arg.readUInt8 === 'function';
+}
+
+/***/ }),
+
+/***/ "./node_modules/util/util.js":
+/*!***********************************!*\
+  !*** ./node_modules/util/util.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+
+// Mark that a method should not be used.
+// Returns a modified function which warns once by default.
+// If --no-deprecation is set, then it is a no-op.
+exports.deprecate = function(fn, msg) {
+  // Allow for deprecating things in the process of starting up.
+  if (isUndefined(global.process)) {
+    return function() {
+      return exports.deprecate(fn, msg).apply(this, arguments);
+    };
+  }
+
+  if (process.noDeprecation === true) {
+    return fn;
+  }
+
+  var warned = false;
+  function deprecated() {
+    if (!warned) {
+      if (process.throwDeprecation) {
+        throw new Error(msg);
+      } else if (process.traceDeprecation) {
+        console.trace(msg);
+      } else {
+        console.error(msg);
+      }
+      warned = true;
+    }
+    return fn.apply(this, arguments);
+  }
+
+  return deprecated;
+};
+
+
+var debugs = {};
+var debugEnviron;
+exports.debuglog = function(set) {
+  if (isUndefined(debugEnviron))
+    debugEnviron = process.env.NODE_DEBUG || '';
+  set = set.toUpperCase();
+  if (!debugs[set]) {
+    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+      var pid = process.pid;
+      debugs[set] = function() {
+        var msg = exports.format.apply(exports, arguments);
+        console.error('%s %d: %s', set, pid, msg);
+      };
+    } else {
+      debugs[set] = function() {};
+    }
+  }
+  return debugs[set];
+};
+
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  array.forEach(function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes, ctx);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = Object.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = Object.getOwnPropertyNames(value);
+  }
+
+  // IE doesn't make error fields non-enumerable
+  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+  if (isError(value)
+      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+    return formatError(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+  keys.forEach(function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (ctx.seen.indexOf(desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = output.reduce(function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return Array.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) &&
+      (objectToString(e) === '[object Error]' || e instanceof Error);
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+exports.isBuffer = __webpack_require__(/*! ./support/isBuffer */ "./node_modules/util/support/isBufferBrowser.js");
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = Object.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -24296,9 +25655,391 @@ module.exports = g;
 /*!*********************!*\
   !*** ./src/App.jsx ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pusher_chatkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pusher/chatkit */ "./node_modules/@pusher/chatkit/dist/web/chatkit.js");
+/* harmony import */ var _pusher_chatkit__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_pusher_chatkit__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_MessageList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/MessageList */ "./src/components/MessageList.jsx");
+/* harmony import */ var _components_SendMessageForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SendMessageForm */ "./src/components/SendMessageForm.jsx");
+/* harmony import */ var _components_RoomList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/RoomList */ "./src/components/RoomList.jsx");
+/* harmony import */ var _components_NewRoomForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/NewRoomForm */ "./src/components/NewRoomForm.jsx");
+/* harmony import */ var _config_ts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./config.ts */ "./src/config.ts");
+/* harmony import */ var _config_ts__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_config_ts__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor() {
+    super();
+    this.state = {
+      roomId: null,
+      messages: [],
+      joinableRooms: [],
+      joinedRooms: []
+    };
+    this.sendMessage = this.sendMessage.bind(this);
+    this.subscribeToRoom = this.subscribeToRoom.bind(this);
+    this.getRooms = this.getRooms.bind(this);
+    this.createRoom = this.createRoom.bind(this);
+  }
+  componentDidMount() {
+    const chatManager = new _pusher_chatkit__WEBPACK_IMPORTED_MODULE_1___default.a.ChatManager({
+      instanceLocator: _config_ts__WEBPACK_IMPORTED_MODULE_6__["instanceLocator"],
+      userId: "Admin",
+      tokenProvider: new _pusher_chatkit__WEBPACK_IMPORTED_MODULE_1___default.a.TokenProvider({
+        url: _config_ts__WEBPACK_IMPORTED_MODULE_6__["tokenUrl"]
+      })
+    });
+
+    chatManager.connect().then(currentUser => {
+      this.currentUser = currentUser;
+      this.getRooms();
+    });
+  }
+
+  getRooms() {
+    this.currentUser.getJoinableRooms().then(joinableRooms => {
+      this.setState({
+        joinableRooms,
+        joinedRooms: this.currentUser.rooms
+      });
+    }).catch(err => console.log("error on joinableRooms: ", errr));
+  }
+
+  subscribeToRoom(roomId) {
+    this.setState({ messages: [] });
+    this.currentUser.subscribeToRoom({
+      roomId,
+      hooks: {
+        onNewMessage: message => {
+          this.setState({ messages: [...this.state.messages, message] });
+        }
+      }
+    }).then(room => {
+      this.setState({ roomId: room.id });
+      this.getRooms();
+    }).catch(err => console.log("error on subsubscribe to room: ", err));
+  }
+
+  sendMessage(text) {
+    this.currentUser.sendMessage({ text, roomId: this.state.roomId });
+  }
+
+  createRoom(name) {
+    this.currentUser.createRoom({
+      name
+    }).then(room => this.subscribeToRoom(room.id)).catch(err => console.log("error with createRoom:"));
+  }
+
+  render() {
+    const { joinedRooms, joinableRooms } = this.state;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "app" },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RoomList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        roomId: this.state.roomId,
+        subscribeToRoom: this.subscribeToRoom,
+        rooms: [...joinedRooms, ...joinableRooms]
+      }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_MessageList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        roomId: this.state.roomId,
+        messages: this.state.messages
+      }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SendMessageForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        disabled: !this.state.roomId,
+        sendMessage: this.sendMessage
+      }),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NewRoomForm__WEBPACK_IMPORTED_MODULE_5__["default"], { createRoom: this.createRoom })
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./src/components/Message.jsx":
+/*!************************************!*\
+  !*** ./src/components/Message.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function Message(props) {
+  const { index, username, text } = props;
+  console.log(props);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    "div",
+    { key: index, className: "message" },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "message-username" },
+      username
+    ),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "message-text" },
+      text
+    )
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Message);
+
+/***/ }),
+
+/***/ "./src/components/MessageList.jsx":
+/*!****************************************!*\
+  !*** ./src/components/MessageList.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Message__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Message */ "./src/components/Message.jsx");
+
+
+
+class MessageList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  componentWillUpdate() {
+    const node = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this);
+    this.shouldScrollToBottom = node.scrollTop - node.clientHeight + 100 >= node.scrollHeight;
+  }
+  componentDidUpdate() {
+    if (this.shouldScrollToBottom) {
+      const node = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this);
+      node.scrollTop = node.scrollHeight;
+    }
+  }
+  render() {
+    const { messages } = this.props;
+    if (!this.props.roomId) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "div",
+        { className: "message-list" },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          "div",
+          { className: "join-room" },
+          "\u2190 Join a room!"
+        )
+      );
+    }
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "message-list" },
+      messages.map((message, index) => {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Message__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: index,
+          username: message.senderId,
+          text: message.text
+        });
+      })
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageList);
+
+/***/ }),
+
+/***/ "./src/components/NewRoomForm.jsx":
+/*!****************************************!*\
+  !*** ./src/components/NewRoomForm.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+class NewRoomForm extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor() {
+    super();
+    this.state = {
+      roomName: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      roomName: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createRoom(this.state.roomName);
+    this.setState({ roomName: "" });
+  }
+
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "new-room-form" },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "form",
+        { onSubmit: this.handleSubmit },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          value: this.state.roomName,
+          onChange: this.handleChange,
+          type: "text",
+          placeholder: "Create a room",
+          required: true
+        }),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          "button",
+          { id: "create-room-btn", type: "submit" },
+          "+"
+        )
+      )
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (NewRoomForm);
+
+/***/ }),
+
+/***/ "./src/components/RoomList.jsx":
+/*!*************************************!*\
+  !*** ./src/components/RoomList.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+class RoomList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  render() {
+    const orderedRooms = [...this.props.rooms].sort((a, b) => a.id - b.id);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "rooms-list" },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "ul",
+        null,
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          "h3",
+          null,
+          "Your rooms:"
+        ),
+        orderedRooms.map(room => {
+          const active = this.props.roomId === room.id ? "active" : "";
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+            "li",
+            { key: room.id, className: "room " + active },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              "a",
+              { onClick: () => this.props.subscribeToRoom(room.id), href: "#" },
+              "# ",
+              room.name
+            )
+          );
+        })
+      )
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (RoomList);
+
+/***/ }),
+
+/***/ "./src/components/SendMessageForm.jsx":
+/*!********************************************!*\
+  !*** ./src/components/SendMessageForm.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js");
+/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(assert__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+class SendMessageForm extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor() {
+    super();
+    this.state = { message: "" };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    this.setState({ message: e.target.value });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.sendMessage(this.state.message);
+    this.setState({ message: "" });
+  }
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "form",
+      { onSubmit: this.handleSubmit, className: "send-message-form" },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        disabled: this.props.disabled,
+        value: this.state.message,
+        onChange: this.handleChange,
+        placeholder: "Type your message here",
+        type: "text"
+      })
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (SendMessageForm);
+
+/***/ }),
+
+/***/ "./src/config.ts":
+/*!***********************!*\
+  !*** ./src/config.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseUrl = "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/";
+var tokenUrl = baseUrl + "73704ae5-06f2-446b-86a9-21beaea56054/token";
+exports.tokenUrl = tokenUrl;
+var instanceLocator = "v1:us1:ac1a43cf-943f-4da1-b5ea-1191225d1f30";
+exports.instanceLocator = instanceLocator;
 
 
 /***/ }),
@@ -24317,13 +26058,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/App.jsx");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_App__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2___default.a, null), document.getElementById("root"));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById("root"));
 
 /***/ })
 
