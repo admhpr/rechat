@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Message from "./Message";
+import logo from "../../assets/rechat-logo.png";
 class MessageList extends React.Component {
   componentWillUpdate() {
     const node = ReactDOM.findDOMNode(this);
@@ -18,7 +19,10 @@ class MessageList extends React.Component {
     if (!this.props.roomId) {
       return (
         <div className="message-list">
-          <div className="join-room">&larr; Join a room!</div>
+          <div className="join-room">
+            <img className="logo" src={logo} alt="logo" />
+            &larr; Join a room!
+          </div>
         </div>
       );
     }
