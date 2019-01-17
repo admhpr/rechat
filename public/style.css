@@ -3,8 +3,8 @@
     --dark-main-color: #3d2e39;
     --secondary-color: #fff;
     --accent-color: #173e43;
-    --main-text-color: #f4f4f4;
-    --secondary-text-color: #333;
+    --main-text-color: #fff;
+    --secondary-text-color: gray;
     --send-message-form: #F5F5F5;
 }
 
@@ -113,8 +113,7 @@ body {
 
 .new-room-form button {
     background: var(--secondary-color);
-    color: var(--main-text-color);
-    border: 0;
+    color: #333 border: 0;
 }
 
 .new-room-form input::placeholder {

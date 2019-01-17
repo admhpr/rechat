@@ -1,6 +1,6 @@
 # Rechat
 
-A simple React chat application
+A simple React chat application to homage to slack!
 
 ## Project setup
 

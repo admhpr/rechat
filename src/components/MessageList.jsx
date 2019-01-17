@@ -21,7 +21,7 @@ class MessageList extends React.Component {
         <div className="message-list">
           <div className="join-room">
             <img className="logo" src={logo} alt="logo" />
-            &larr; Join a room!
+            &larr; # Join a room!
           </div>
         </div>
       );
