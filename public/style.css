@@ -1,9 +1,10 @@
 :root {
-    --main-color: #3fb0ac;
-    --secondary-color: #fae596;
+    --main-color: #4e3843;
+    --dark-main-color: #3d2e39;
+    --secondary-color: #fff;
     --accent-color: #173e43;
-    --main-text-color: #333;
-    --secondary-text-color: #3fb0ac;
+    --main-text-color: #f4f4f4;
+    --secondary-text-color: #333;
     --send-message-form: #F5F5F5;
 }
 
@@ -41,6 +42,10 @@ body {
 
 .rooms-list {
     grid-area: r;
+}
+
+.room-list-header {
+    background: var(--dark-main-color)
 }
 
 .message-list {
@@ -113,7 +118,7 @@ body {
 }
 
 .new-room-form input::placeholder {
-    color: var(--main-text-color);
+    color: var(--secondary-text-color);
     font-weight: 600;
 }
 
@@ -155,6 +160,7 @@ body {
     height: 100%;
     overflow: scroll;
     border-bottom: 5px solid var(--accent-color);
+    color: var(--secondary-text-color);
     background: var(--secondary-color);
 }
 
@@ -180,6 +186,7 @@ body {
     margin: 0;
     border-style: none;
     background: var(--send-message-form);
+    color: var(--secondary-text-color);
     font-weight: 200;
 
 }
@@ -189,7 +196,7 @@ body {
 }
 
 .send-message-form input::placeholder {
-    color: var(--main-text-color);
+    color: var(--secondary-text-color);
     font-weight: 600;
 }
 
