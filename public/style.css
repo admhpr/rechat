@@ -14,7 +14,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: system-ui;
-    font-weight: 200;
+    font-weight: 300;
+    font-size: 20px;
     color: var(--main-text-color);
 }
 
@@ -108,12 +109,13 @@ body {
 .new-room-form input {
     width: 135px;
     background: var(--secondary-color);
-    color: var(--main-text-color)
+    color: #333;
 }
 
 .new-room-form button {
     background: var(--secondary-color);
-    color: #333 border: 0;
+    color: #333;
+    border: 0;
 }
 
 .new-room-form input::placeholder {
@@ -137,11 +139,16 @@ body {
     margin: 15px 0;
 }
 
-.message .message-username {
-    font-size: 11px;
+.message {
+    font-size: 20px;
     color: var(--main-text-color);
     opacity: 0.9;
     margin-bottom: 6px;
+}
+
+.message-username {
+    color: var(--secondary-text-color);
+    margin-bottom: 4px;
 }
 
 .message .message-text {
@@ -163,7 +170,6 @@ body {
     background: var(--secondary-color);
 }
 
-.message-list,
 .join-room {
     display: flex;
     justify-content: center;
@@ -185,9 +191,8 @@ body {
     margin: 0;
     border-style: none;
     background: var(--send-message-form);
-    color: var(--secondary-text-color);
+    color: #333;
     font-weight: 200;
-
 }
 
 .send-message-form input:focus {

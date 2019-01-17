@@ -2,6 +2,8 @@
 
 A simple React chat application to homage to slack!
 
+![demo](./src/assets/rechat-demo.gif)
+
 ## Project setup
 
 ```
